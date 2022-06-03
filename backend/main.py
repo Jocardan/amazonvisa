@@ -1,8 +1,7 @@
 from flask import Flask
 from flask_restful import Api
+from router import get_router
 from config import load_config
-
-from todos import Todos
 
 app = Flask(__name__)
 api = Api(app)
@@ -10,7 +9,7 @@ api = Api(app)
 config = load_config()
 app.config.update(config)
 
-api.add_resource(Todos, '/')
+get_router(api)
 
 if __name__ == '__main__':
     app.run(

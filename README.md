@@ -5,7 +5,11 @@ A project to help to manage the Amazonvisa secretary.
 ## Backend dependencies
 - [FireBase](https://firebase.google.com/)
 - [Flask](https://flask.palletsprojects.com/)
+
+### Backend utilities
 - [Flask Restful](https://flask-restful.readthedocs.io/)
+- [Pytest](https://docs.pytest.org/en/latest/)
+- [Mashmallow](https://marshmallow.readthedocs.io/en/)
 
 ## Backend Environment
 Creates a _.env_ file in the [Backend folder](./backend/) that can be used to set the following environment variables:

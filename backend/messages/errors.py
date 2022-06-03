@@ -1,0 +1,1 @@
+INVALID_CPF_MSG = "CPF inválido, precisa estar no formato: 000.000.000-00"
