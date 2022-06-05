@@ -1,1 +1,1 @@
-from .afiliados import Afiliados
+from .afiliados import Afiliado, Afiliados

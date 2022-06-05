@@ -1,9 +1,22 @@
 from flask.testing import FlaskClient
+from common import afiliado_ref
 from faker import Faker
 
 from models import VALID_SEXO, VALID_GRAU_INSTRUCAO, VALID_ESTADO_CIVIL
 
 faker = Faker()
+
+def test_show_afiliados(client_app: FlaskClient):
+    """
+    Should call GET to /v1/afiliados/:id and get one afiliado
+    """
+    afiliados_list = afiliado_ref.stream()
+    afiliado = next(afiliados_list).to_dict()
+    afiliado_id = afiliado["id"]
+    response = client_app.get(f"/v1/afiliado/{afiliado_id}/")
+    response_json = response.get_json() or []
+    assert (response.status_code == 200 and 
+            afiliado == response_json)
 
 def test_get_afiliados(client_app: FlaskClient):
     """

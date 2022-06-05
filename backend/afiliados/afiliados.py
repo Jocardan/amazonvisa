@@ -1,49 +1,43 @@
+from messages.errors import CPF_EXISTS_MSG
+from common.utils import error_handler
 from models import AfiliadoSchema
 from common import afiliado_ref
 
 from flask_restful import Resource
 from flask import request
 
-from marshmallow import ValidationError
+class Afiliado(Resource):
+    method_decorators = [error_handler]
+
+    def get(self, identifier: str):
+        todo = afiliado_ref.document(identifier).get()
+        return todo.to_dict()
+
+    def delete(self, identifier: str):
+        afiliado_ref.document(identifier).delete()
+        return {"success": True}, 200
+
+    def put(self, identifier: int):
+        afiliado_ref.document(identifier).update(request.json)
+        return {"success": True}
 
 class Afiliados(Resource):
-    def get(self, todo_id: str = None):
-        try:
-            if todo_id:
-                todo = afiliado_ref.document(todo_id).get()
-                return todo.to_dict()
-            else:
-                all_todos = [doc.to_dict() for doc in afiliado_ref.stream()]
-                return all_todos
-        except Exception as e:
-            return f"An Error Occurred: {e}"
+    method_decorators = [error_handler]
+
+    def get(self):
+        all_todos = [doc.to_dict() for doc in afiliado_ref.stream()]
+        return all_todos
 
     def post(self):
-        try:
-            new_afiliado = AfiliadoSchema().load(request.json)
-            identifier = str(new_afiliado["id"])
-            new_afiliado = AfiliadoSchema().dump(new_afiliado)
-            afiliado_ref.document(identifier).set(new_afiliado)
-            return {
-                "afiliado": new_afiliado
-            }, 201
-        except ValidationError as err:
-            return err.messages, 400
-        except Exception as e:
-            return f"An Error Occurred: {e}", 500
+        new_afiliado = AfiliadoSchema().load(request.json)
+        identifier = str(new_afiliado["id"])
+        afiliado_cpf = str(new_afiliado["CPF"])
+        new_afiliado = AfiliadoSchema().dump(new_afiliado)
 
-    def delete(self, user_id):
-        try:
-            # Check for ID in URL query
-            todo_id = request.args.get('id')
-            afiliado_ref.document(todo_id).delete()
-            return {"success": True}, 200
-        except Exception as e:
-            return f"An Error Occurred: {e}"
-
-    def put(self, user_id: int):
-        try:
-            afiliado_ref.document(user_id).update(request.json)
-            return {"success": True}
-        except Exception as e:
-            return f"An Error Occurred: {e}"
+        cpf_already_registered = afiliado_ref.where(
+            u'CPF', u'==', afiliado_cpf).get()
+        if len(cpf_already_registered) > 0:
+            return CPF_EXISTS_MSG, 400
+        
+        afiliado_ref.document(identifier).set(new_afiliado)
+        return { "afiliado": new_afiliado }, 201
