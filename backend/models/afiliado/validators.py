@@ -6,7 +6,7 @@ VALID_SEXO = [
 VALID_ESTADO_CIVIL = [
     "Divorciado",
     "Solteiro",
-    "Separado"
+    "Separado",
     "Casado",
     "Viúvo"
 ]

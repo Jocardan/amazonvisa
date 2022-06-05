@@ -32,7 +32,8 @@ class AfiliadoSchema(Schema):
     grau_instrucao = fields.Str(
         validate = validate.OneOf(VALID_GRAU_INSTRUCAO))
     data_admissao = fields.Date(load_default = datetime.now())
-    dependentes = fields.Nested('DependenteSchema', many=True)
+    dependentes = fields.Nested('DependenteSchema', many=True,
+                                dump_default = [])
 
     @validates("CPF")
     def validate_cpf(self, value):

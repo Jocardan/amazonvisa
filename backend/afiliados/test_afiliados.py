@@ -1,31 +1,17 @@
 from flask.testing import FlaskClient
 from common import afiliado_ref
 from faker import Faker
+import pytest
 
-from models import VALID_SEXO, VALID_GRAU_INSTRUCAO, VALID_ESTADO_CIVIL
+from models import (VALID_SEXO, VALID_GRAU_INSTRUCAO, 
+    VALID_ESTADO_CIVIL)
 
 faker = Faker()
 
-def test_show_afiliados(client_app: FlaskClient):
-    """
-    Should call GET to /v1/afiliados/:id and get one afiliado
-    """
-    afiliados_list = afiliado_ref.stream()
-    afiliado = next(afiliados_list).to_dict()
-    afiliado_id = afiliado["id"]
-    response = client_app.get(f"/v1/afiliado/{afiliado_id}/")
-    response_json = response.get_json() or []
-    assert (response.status_code == 200 and 
-            afiliado == response_json)
-
-def test_get_afiliados(client_app: FlaskClient):
-    """
-    Should call GET to /v1/afiliados and get all afiliados
-    """
-    response = client_app.get("/v1/afiliados/")
-    response_json = response.get_json() or []
-    assert (response.status_code == 200 and 
-            type(response_json) == list)
+@pytest.fixture
+def first_afiliado():
+    afiliados_list = afiliado_ref.order_by('id').limit(1).get()
+    return afiliados_list[0].to_dict()
 
 def test_post_afiliados(client_app: FlaskClient):
     """
@@ -53,3 +39,52 @@ def test_post_afiliados(client_app: FlaskClient):
     response_json = response.get_json() or {}
     assert response.status_code == 201, str(response_json)
     assert response_json["afiliado"]["CPF"] == new_afiliado["CPF"]
+
+def test_show_afiliado(client_app: FlaskClient, 
+                       first_afiliado: str):
+    """
+    Should call GET to /v1/afiliado/:id and get one afiliado
+    """
+    afiliado_id = first_afiliado["id"]
+    response = client_app.get(f"/v1/afiliado/{afiliado_id}/")
+    response_json = response.get_json() or []
+    assert (response.status_code == 200 and 
+            first_afiliado == response_json)
+
+def test_update_afiliado(client_app: FlaskClient, 
+                         first_afiliado: str):
+    """
+    Should call PUT to /v1/afiliado/:id and update one afiliado
+    """
+    afiliado_id = first_afiliado["id"]
+    update_info = { "nome": faker.name() }
+
+    response = client_app.put(f"/v1/afiliado/{afiliado_id}/", 
+                              json = update_info )
+    
+    afiliado_doc = afiliado_ref.document(afiliado_id)
+    afiliado_updated = afiliado_doc.get().to_dict()
+    
+    assert (response.status_code == 204 and 
+            first_afiliado["id"] == afiliado_updated["id"] and
+            first_afiliado["nome"] != afiliado_updated["nome"])
+
+def test_delete_afiliado(client_app: FlaskClient, 
+                         first_afiliado: str):
+    """
+    Should call DELETE to /v1/afiliado/:id and get one afiliado
+    """
+    afiliado_id = first_afiliado["id"]
+    response = client_app.delete(f"/v1/afiliado/{afiliado_id}/")
+    response_json = response.get_json() or []
+    assert (response.status_code == 200 and 
+            "success" in response_json)
+
+def test_get_afiliados(client_app: FlaskClient):
+    """
+    Should call GET to /v1/afiliados and get all afiliados
+    """
+    response = client_app.get("/v1/afiliados/")
+    response_json = response.get_json() or {}
+    assert (response.status_code == 200 and 
+        type(response_json.get("afiliados")) == list)
