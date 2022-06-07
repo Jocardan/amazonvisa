@@ -13,13 +13,11 @@ def first_afiliado():
     afiliados_list = afiliado_ref.order_by('id').limit(1).get()
     return afiliados_list[0].to_dict()
 
-def test_post_afiliados(client_app: FlaskClient):
-    """
-    Should call POST to /v1/afiliados and create a new afiliado
-    """
+@pytest.fixture
+def new_afiliado():
     cpf = str(faker.random_number(digits = 11))
     cpf = cpf[:3] + "." + cpf[3:6] + "." + cpf[6:9] + "-" + cpf[9:]
-    new_afiliado = {
+    return {
         "CPF": cpf,
         "RG": faker.name(),
         "nome": faker.name(),
@@ -27,7 +25,7 @@ def test_post_afiliados(client_app: FlaskClient):
         "profissao": faker.job(),
         "endereco": faker.address(),
         "data_nascimento": faker.date(),
-        "telefone": faker.phone_number(),
+        "telefone": f"+1{faker.random_number(14)}",
         "sexo": faker.random_element(elements = VALID_SEXO),
         "estado_civil": faker.random_element(
             elements = VALID_ESTADO_CIVIL),
@@ -35,13 +33,36 @@ def test_post_afiliados(client_app: FlaskClient):
             elements = VALID_GRAU_INSTRUCAO),
     }
 
+def test_post_afiliados(client_app: FlaskClient, new_afiliado: dict):
+    """
+    Should call POST to /v1/afiliados and create a new afiliado
+    """
     response = client_app.post("/v1/afiliados/", json = new_afiliado)
     response_json = response.get_json() or {}
     assert response.status_code == 201, str(response_json)
     assert response_json["afiliado"]["CPF"] == new_afiliado["CPF"]
 
+def test_post_afiliados_with_duplicated_cpf(client_app: FlaskClient, 
+                                            first_afiliado: dict):
+    """
+    Should call POST to /v1/afiliados and fails to create a new afiliado
+    """
+    response = client_app.post("/v1/afiliados/", json = first_afiliado)
+    response_json = response.get_json() or {}
+    assert response.status_code == 400, str(response_json)
+
+def test_post_afiliados_with_wrong_cpf(client_app: FlaskClient, 
+                                       new_afiliado: dict):
+    """
+    Should call POST to /v1/afiliados and fails to create a new afiliado
+    """
+    new_afiliado["CPF"] = "12345678901"
+    response = client_app.post("/v1/afiliados/", json = new_afiliado)
+    response_json = response.get_json() or {}
+    assert response.status_code == 400, str(response_json)
+
 def test_show_afiliado(client_app: FlaskClient, 
-                       first_afiliado: str):
+                       first_afiliado: dict):
     """
     Should call GET to /v1/afiliado/:id and get one afiliado
     """
@@ -52,7 +73,7 @@ def test_show_afiliado(client_app: FlaskClient,
             first_afiliado == response_json)
 
 def test_update_afiliado(client_app: FlaskClient, 
-                         first_afiliado: str):
+                         first_afiliado: dict):
     """
     Should call PUT to /v1/afiliado/:id and update one afiliado
     """
@@ -70,7 +91,7 @@ def test_update_afiliado(client_app: FlaskClient,
             first_afiliado["nome"] != afiliado_updated["nome"])
 
 def test_delete_afiliado(client_app: FlaskClient, 
-                         first_afiliado: str):
+                         first_afiliado: dict):
     """
     Should call DELETE to /v1/afiliado/:id and get one afiliado
     """

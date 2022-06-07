@@ -3,7 +3,7 @@ from marshmallow import (Schema, fields,
 from datetime import datetime
 import re, uuid
 
-from messages.errors import INVALID_CPF_MSG
+from messages.errors import INVALID_CPF_MSG, INVALID_PHONE_MSG
 from .validators import *
 
 class DependenteSchema(Schema):
@@ -36,7 +36,7 @@ class AfiliadoSchema(Schema):
                                 dump_default = [])
 
     @validates("CPF")
-    def validate_cpf(self, value):
+    def validate_cpf(self, value: str):
         """
         Validates the CPF field, verifying if
         is in the format 000.000.000-00
@@ -45,3 +45,14 @@ class AfiliadoSchema(Schema):
         is_valid = re.fullmatch(pattern, value)
         if not is_valid:
             raise ValidationError(INVALID_CPF_MSG)
+    
+    @validates("telefone")
+    def validate_telefone(self, value: str):
+        """
+        Validates the telefone field, verifying if
+        is in the format +5581999999999
+        """
+        pattern = r'^\+[1-9]\d{1,14}$'
+        is_valid = re.fullmatch(pattern, value)
+        if not is_valid:
+            raise ValidationError(INVALID_PHONE_MSG)

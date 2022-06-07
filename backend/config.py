@@ -6,9 +6,7 @@ def env_to_boolean(env_var: str) -> bool:
     return to_lower in ("true", "yes", "y", "1")
 
 def load_config() -> dict:
-    environ_loaded = load_dotenv()
-    if not environ_loaded:
-        print('Can\'t load the system environment variables')
+    load_dotenv()
 
     return {
         "DEBUG": env_to_boolean("DEBUG"),
