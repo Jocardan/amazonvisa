@@ -5,4 +5,4 @@ cred = credentials.Certificate('key.json')
 default_app = initialize_app(cred)
 db = firestore.client()
 
-afiliado_ref = db.collection('afiliados')
+affiliate_ref = db.collection('affiliates')

@@ -1,6 +1,6 @@
 from flask_restful import fields
 
-AFILIADO_OUTPUT = {
+affiliate_OUTPUT = {
     "id": fields.String,
     "RG": fields.String,
     "CPF": fields.String,
@@ -21,6 +21,6 @@ AFILIADO_OUTPUT = {
     "data_nascimento": fields.String,
 }
 
-AFILIADOS_OUTPUT = {
-    "afiliados": fields.List(fields.Nested(AFILIADO_OUTPUT))
+affiliateS_OUTPUT = {
+    "affiliates": fields.List(fields.Nested(affiliate_OUTPUT))
 }

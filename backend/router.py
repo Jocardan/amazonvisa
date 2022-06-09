@@ -1,6 +1,6 @@
 from flask_restful import Api
 from accounts import Account, Accounts
-from afiliados import Afiliado, Afiliados
+from affiliates import affiliate, affiliates
 
 def get_router(api: Api):
     """
@@ -9,5 +9,5 @@ def get_router(api: Api):
     api.add_resource(Account, '/v1/account/<string:identifier>/')
     api.add_resource(Accounts, '/v1/accounts/')
 
-    api.add_resource(Afiliado, '/v1/afiliado/<string:identifier>/')
-    api.add_resource(Afiliados, '/v1/afiliados/')    
+    api.add_resource(affiliate, '/v1/affiliate/<string:identifier>/')
+    api.add_resource(affiliates, '/v1/affiliates/')    

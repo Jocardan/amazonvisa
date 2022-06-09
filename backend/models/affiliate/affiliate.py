@@ -11,7 +11,7 @@ class DependenteSchema(Schema):
     parentesco = fields.Str(required=True)
     data_nascimento = fields.Date(required=True)
 
-class AfiliadoSchema(Schema):
+class affiliateSchema(Schema):
     id = fields.UUID(load_default = uuid.uuid1())
     RG = fields.Str()
     email = fields.Email()

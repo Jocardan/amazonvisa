@@ -1,2 +1,2 @@
-from .afiliado import *
+from .affiliate import *
 from .account import *

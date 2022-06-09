@@ -3,10 +3,10 @@ from marshmallow import (Schema, fields,
 import re
 
 from messages import INVALID_CPF_MSG
-from models.afiliado import (VALID_SEXO, 
+from models.affiliate import (VALID_SEXO, 
     VALID_ESTADO_CIVIL, VALID_GRAU_INSTRUCAO)
 
-class UpdateAfiliadoInput(Schema):
+class UpdateaffiliateInput(Schema):
     RG = fields.Str()
     CPF = fields.Str()
     nome = fields.Str()
