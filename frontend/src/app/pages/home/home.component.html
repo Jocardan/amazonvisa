@@ -1,0 +1,67 @@
+<div class="app-home">
+  <header class="flex">
+    <div class="p-4"><h1 class="text-pink-900">Amazonvisa</h1></div>
+    <h2 class="align-self-center ml-auto mr-7">
+      Caixa {{ moneyBox | currency: "BRL" }}
+    </h2>
+    <button
+      pButton
+      label="Adicionar afiliado"
+      class="p-button p-component align-self-center"
+    ></button>
+  </header>
+
+  <main role="main">
+    <p-table
+      #dt
+      [value]="users"
+      responsiveLayout="scroll"
+      dataKey="id"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      styleClass="p-datatable-customers p-datatable-gridlines"
+      [paginator]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [globalFilterFields]="['status', 'name', 'payment']"
+    >
+      <ng-template pTemplate="caption">
+        <div class="flex">
+          <span class="p-input-icon-left ml-auto">
+            <i class="pi pi-search"></i>
+            <input
+              pInputText
+              type="text"
+              placeholder="Procurar afiliado"
+              (input)="applyFilterGlobal($event, 'contains')"
+            />
+          </span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Nome</th>
+          <th>Situação</th>
+          <th>Pagamento</th>
+          <th style="width: 4rem">Editar</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-user>
+        <tr>
+          <td>{{ user.name }}</td>
+          <td>{{ user.status }}</td>
+          <td>{{ user.payment }}</td>
+          <td>
+            <button
+              type="button"
+              pButton
+              icon="pi pi-user-edit"
+              pRipple
+              (click)="selectUser(user)"
+            ></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </main>
+</div>
