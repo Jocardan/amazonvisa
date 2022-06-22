@@ -5,6 +5,7 @@
     <h2>Caixa {{ moneyBox | currency: "BRL" }}</h2>
 
     <button
+      routerLink="/create-user"
       pButton
       label="Adicionar afiliado"
       class="p-button p-component align-self-center"
@@ -69,17 +70,37 @@
   </main>
 </div>
 
-<p-dialog header="Editar informações" [(visible)]="display">
-  <h3>{{ userSelectedName }}</h3>
-  <p>Ultimo pagamento: {{ date }}</p>
+<p-dialog
+  header="Editar informações"
+  [(visible)]="display"
+  [style]="{
+    width: '500px'
+  }"
+>
+  <h3>Nome do afiliado: {{ userSelectedName }}</h3>
+  <p>Data do ultimo pagamento: {{ date | date: "fullDate":"":"pt-BR" }}</p>
   <p>Data de vencimento: {{ userSelectedPayment }}</p>
   <p-divider align="left" type="dashed">Registrar pagamento</p-divider>
-  <p-calendar
-    dateFormat="dd/mm/yy"
-    [(ngModel)]="date"
-    [minDate]="minDate"
-    [readonlyInput]="true"
-    inputId="check-payment"
-  ></p-calendar>
-  <p-button label="Registrar" icon="pi pi-check" iconPos="left"></p-button>
+  <div>
+    <p-calendar
+      [style]="{
+        position: 'fixed',
+        overflow: 'visible'
+      }"
+      [showIcon]="true"
+      dateFormat="dd/mm/yy"
+      [(ngModel)]="date"
+      [minDate]="minDate"
+      [readonlyInput]="true"
+      inputId="check-payment"
+    ></p-calendar>
+    <p-button
+      label="Registrar"
+      icon="pi pi-check"
+      iconPos="left"
+      [style]="{
+        float: 'right'
+      }"
+    ></p-button>
+  </div>
 </p-dialog>

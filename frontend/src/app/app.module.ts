@@ -19,11 +19,22 @@ import { PaginatorModule } from 'primeng/paginator';
 import { DialogModule } from 'primeng/dialog';
 import { DividerModule } from 'primeng/divider';
 import { CalendarModule } from 'primeng/calendar';
+import { CreateUserComponent } from './pages/create-user/create-user.component';
+
+import { InputMaskModule } from 'primeng/inputmask';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { KeyFilterModule } from 'primeng/keyfilter';
+import { DropdownModule } from 'primeng/dropdown';
 
 registerLocaleData(ptBr);
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, NotFoundComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    NotFoundComponent,
+    CreateUserComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -37,6 +48,10 @@ registerLocaleData(ptBr);
     DialogModule,
     DividerModule,
     CalendarModule,
+    InputMaskModule,
+    InputTextareaModule,
+    KeyFilterModule,
+    DropdownModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt' }],
   bootstrap: [AppComponent],
