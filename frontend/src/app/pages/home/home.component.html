@@ -68,3 +68,18 @@
     </p-table>
   </main>
 </div>
+
+<p-dialog header="Editar informações" [(visible)]="display">
+  <h3>{{ userSelectedName }}</h3>
+  <p>Ultimo pagamento: {{ date }}</p>
+  <p>Data de vencimento: {{ userSelectedPayment }}</p>
+  <p-divider align="left" type="dashed">Registrar pagamento</p-divider>
+  <p-calendar
+    dateFormat="dd/mm/yy"
+    [(ngModel)]="date"
+    [minDate]="minDate"
+    [readonlyInput]="true"
+    inputId="check-payment"
+  ></p-calendar>
+  <p-button label="Registrar" icon="pi pi-check" iconPos="left"></p-button>
+</p-dialog>

@@ -1,6 +1,7 @@
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Table } from 'primeng/table';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-home',
@@ -8,31 +9,43 @@ import { Table } from 'primeng/table';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  selectedName: any;
-  filteredNames: any[];
   users: any[];
   moneyBox: number;
 
-  constructor(userService: UserServiceService) {
+  date: any;
+  minDate: any;
+  display: boolean = false;
+
+  userSelectedName: string = '';
+  userSelectedPayment: string = '';
+
+  language: any;
+
+  constructor(
+    private userService: UserServiceService,
+    private config: PrimeNGConfig
+  ) {
     this.users = userService.getUsers();
-    this.filteredNames = [];
-    this.moneyBox = 127;
+    this.moneyBox = 1273;
+    this.language = userService.pt;
   }
 
   @ViewChild('dt') dt: Table | undefined;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.config.setTranslation(this.language);
 
-  filterName(event: any) {
-    let filtered: any[] = [];
-    let query = event.query;
-    for (let i = 0; i < this.users.length; i++) {
-      let user = this.users[i];
-      if (user.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-        filtered.push(user);
-      }
-    }
-    this.filteredNames = filtered;
+    let today = new Date();
+    let day = today.getDay();
+    let month = today.getMonth();
+    let year = today.getFullYear();
+    let yesterday = day === 0 ? 30 : day - 1;
+    let prevMonth = month === 0 ? 11 : month - 1;
+    let prevYear = prevMonth === 11 ? year - 1 : year;
+    this.minDate = new Date();
+    this.minDate.setDate(yesterday);
+    this.minDate.setMonth(prevMonth);
+    this.minDate.setFullYear(prevYear);
   }
 
   applyFilterGlobal($event: any, stringVal: any) {
@@ -40,6 +53,8 @@ export class HomeComponent implements OnInit {
   }
 
   selectUser(user: any) {
-    console.log(user);
+    this.userSelectedName = user.name;
+    this.userSelectedPayment = user.payment;
+    this.display = true;
   }
 }
