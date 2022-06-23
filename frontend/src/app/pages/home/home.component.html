@@ -5,9 +5,9 @@
     <h2>Caixa {{ moneyBox | currency: "BRL" }}</h2>
 
     <button
-      routerLink="/create-user"
+      (click)="changeModalVisibility()"
       pButton
-      label="Adicionar afiliado"
+      label="Mudar de página"
       class="p-button p-component align-self-center"
     ></button>
   </header>
@@ -104,3 +104,5 @@
     ></p-button>
   </div>
 </p-dialog>
+
+<app-show-routes #modalChild></app-show-routes>

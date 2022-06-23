@@ -25,6 +25,8 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import { DropdownModule } from 'primeng/dropdown';
+import { CreatePartnerComponent } from './pages/create-partner/create-partner.component';
+import { ShowRoutesComponent } from './components/show-routes/show-routes.component';
 
 registerLocaleData(ptBr);
 
@@ -34,6 +36,8 @@ registerLocaleData(ptBr);
     HomeComponent,
     NotFoundComponent,
     CreateUserComponent,
+    CreatePartnerComponent,
+    ShowRoutesComponent,
   ],
   imports: [
     BrowserModule,

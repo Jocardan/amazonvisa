@@ -2,7 +2,7 @@ import { UserServiceService } from 'src/app/services/user-service.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Table } from 'primeng/table';
 import { PrimeNGConfig } from 'primeng/api';
-
+import { ShowRoutesComponent } from '../../components/show-routes/show-routes.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,11 +15,13 @@ export class HomeComponent implements OnInit {
   date: any;
   minDate: any;
   display: boolean = false;
+  modalVisibility: boolean = false;
 
   userSelectedName: string = '';
   userSelectedPayment: string = '';
 
   language: any;
+  @ViewChild('modalChild') modalChild: ShowRoutesComponent | undefined;
 
   constructor(
     private userService: UserServiceService,
@@ -56,5 +58,9 @@ export class HomeComponent implements OnInit {
     this.userSelectedName = user.name;
     this.userSelectedPayment = user.payment;
     this.display = true;
+  }
+
+  changeModalVisibility() {
+    this.modalChild?.switchVisibility();
   }
 }
