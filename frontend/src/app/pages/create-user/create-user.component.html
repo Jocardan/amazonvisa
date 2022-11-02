@@ -1,59 +1,89 @@
 <div class="container">
   <h1>Cadastrar afiliado</h1>
-  <div class="form">
+  <form class="form" #f="ngForm" (ngSubmit)="onSubmit(f)">
     <input
       id="fullName-input"
       type="text"
       pInputText
       placeholder="Nome completo"
       [(ngModel)]="userName"
+      name="name"
     />
+
+    <div class="row">
+      <p-dropdown
+        placeholder="Qual bairro reside?"
+        [options]="placeList"
+        [(ngModel)]="place"
+        optionLabel="label"
+        name="place"
+      ></p-dropdown>
+
+      <p-dropdown
+        placeholder="Recebe bolsa família?"
+        [options]="yesNo"
+        [(ngModel)]="aux"
+        optionLabel="label"
+        name="aux"
+      ></p-dropdown>
+    </div>
 
     <div class="row">
       <p-inputMask
         mask="99.999.999"
         [(ngModel)]="userRG"
         placeholder="RG"
+        name="rg"
       ></p-inputMask>
 
       <p-inputMask
-        [style]="{ width: '250px' }"
         mask="999.999.999-99"
         [(ngModel)]="userCPF"
         placeholder="CPF"
+        name="cpf"
       ></p-inputMask>
+
+      <p-dropdown
+        placeholder="Sexo"
+        [options]="sexList"
+        [(ngModel)]="userSex"
+        optionLabel="label"
+        name="userSex"
+      ></p-dropdown>
     </div>
 
-    <input
-      id="work-input"
-      type="text"
-      pInputText
-      placeholder="Profissão"
-      [(ngModel)]="userWork"
-    />
+    <div class="row">
+      <p-dropdown
+        placeholder="Religião"
+        [options]="religionList"
+        [(ngModel)]="religion"
+        optionLabel="label"
+        name="religion"
+      ></p-dropdown>
 
-    <input
-      id="address-input"
-      type="text"
-      pInputText
-      placeholder="Endereço"
-      [(ngModel)]="userAddress"
-    />
+      <p-dropdown
+        placeholder="Renda Média Famíliar"
+        [options]="salaryList"
+        [(ngModel)]="familiarSalary"
+        optionLabel="label"
+        name="familiarSalary"
+      ></p-dropdown>
 
-    <input
-      id="email-input"
-      type="text"
-      pInputText
-      placeholder="Email"
-      [(ngModel)]="userEmail"
-      [pKeyFilter]="'email'"
-    />
+      <p-dropdown
+        placeholder="Residência"
+        [options]="residenceList"
+        [(ngModel)]="residenceType"
+        optionLabel="label"
+        name="residenceType"
+      ></p-dropdown>
+    </div>
 
     <div class="row">
       <p-inputMask
         mask="(99) 9 9999-9999"
         [(ngModel)]="userPhone"
         placeholder=" N° (81) 9 1234-1234"
+        name="phone"
       ></p-inputMask>
 
       <p-calendar
@@ -63,6 +93,7 @@
         [readonlyInput]="true"
         inputId="birthDate-input"
         placeholder="Data de nascimento"
+        name="birthday"
       ></p-calendar>
     </div>
 
@@ -72,22 +103,36 @@
         [options]="gradeList"
         [(ngModel)]="userGrade"
         optionLabel="label"
+        name="grade"
       ></p-dropdown>
 
-      <p-dropdown
-        placeholder="Sexo"
-        [options]="sexList"
-        [(ngModel)]="userSex"
-        optionLabel="label"
-      ></p-dropdown>
+      <input
+        id="work-input"
+        type="text"
+        pInputText
+        placeholder="Profissão"
+        [(ngModel)]="userWork"
+        name="userWork"
+      />
 
       <p-dropdown
         placeholder="Estado civil"
         [options]="civilStateList"
         [(ngModel)]="userStatus"
         optionLabel="label"
+        name="civilState"
       ></p-dropdown>
     </div>
+
+    <input
+      id="email-input"
+      type="text"
+      pInputText
+      placeholder="Email"
+      [(ngModel)]="userEmail"
+      [pKeyFilter]="'email'"
+      name="email"
+    />
 
     <div class="row">
       <input
@@ -97,6 +142,7 @@
         placeholder="Código único"
         [(ngModel)]="userId"
         [pKeyFilter]="'pint'"
+        name="cod"
       />
 
       <p-calendar
@@ -106,18 +152,10 @@
         [readonlyInput]="true"
         inputId="startDate-input"
         placeholder="Data de admissão"
+        name="startDate"
       ></p-calendar>
     </div>
+  </form>
 
-    <textarea
-      [rows]="3"
-      [cols]="22"
-      placeholder="Detalhes"
-      [autoResize]="autoResize"
-      [(ngModel)]="userDetail"
-      pInputTextarea
-    ></textarea>
-  </div>
-
-  <button pButton type="button">Cadastrar</button>
+  <button pButton type="submit" disabled="!f.valid">Cadastrar</button>
 </div>
