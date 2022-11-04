@@ -32,6 +32,13 @@ export class CreateUserComponent implements OnInit {
   residenceType: number = 0;
   religion: string = '';
 
+  cep: any;
+  state: any;
+  city: any;
+  street: any;
+  numberStreet: any;
+  complement: any;
+
   religionList: any[] = [
     { label: 'Adventista do 7° dia', value: 'Adventista do 7° dia' },
     { label: 'Assembléia de Deus', value: 'Assembléia de Deus' },

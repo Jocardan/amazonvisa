@@ -12,14 +12,6 @@
 
     <div class="row">
       <p-dropdown
-        placeholder="Qual bairro reside?"
-        [options]="placeList"
-        [(ngModel)]="place"
-        optionLabel="label"
-        name="place"
-      ></p-dropdown>
-
-      <p-dropdown
         placeholder="Recebe bolsa família?"
         [options]="yesNo"
         [(ngModel)]="aux"
@@ -30,6 +22,7 @@
 
     <div class="row">
       <p-inputMask
+        [style]="{ width: '110px' }"
         mask="99.999.999"
         [(ngModel)]="userRG"
         placeholder="RG"
@@ -37,6 +30,7 @@
       ></p-inputMask>
 
       <p-inputMask
+        [style]="{ width: '140px' }"
         mask="999.999.999-99"
         [(ngModel)]="userCPF"
         placeholder="CPF"
@@ -44,49 +38,109 @@
       ></p-inputMask>
 
       <p-dropdown
+        [style]="{ width: '150px' }"
         placeholder="Sexo"
         [options]="sexList"
         [(ngModel)]="userSex"
         optionLabel="label"
         name="userSex"
       ></p-dropdown>
+
+      <input
+        [style]="{ width: '100px' }"
+        id="cod-input"
+        type="text"
+        pInputText
+        placeholder="Cód"
+        [(ngModel)]="userId"
+        [pKeyFilter]="'pint'"
+        name="cod"
+      />
     </div>
 
     <div class="row">
+      <p-inputMask
+        [style]="{ width: '120px' }"
+        mask="99999-999"
+        [(ngModel)]="cep"
+        placeholder="CEP"
+        name="cep"
+      ></p-inputMask>
+
+      <input
+        [style]="{ width: '90px' }"
+        id="state"
+        type="text"
+        pInputText
+        placeholder="Estado"
+        [(ngModel)]="state"
+        name="state"
+      />
+
+      <input
+        [style]="{ width: '300px' }"
+        id="city-input"
+        type="text"
+        pInputText
+        placeholder="Cidade"
+        [(ngModel)]="userWork"
+        name="userWork"
+      />
+    </div>
+
+    <div class="row">
+      <input
+        id="work-input"
+        type="text"
+        pInputText
+        placeholder="Profissão"
+        [(ngModel)]="userWork"
+        name="userWork"
+      />
+
       <p-dropdown
+        [style]="{ width: '333px' }"
         placeholder="Religião"
         [options]="religionList"
         [(ngModel)]="religion"
         optionLabel="label"
         name="religion"
       ></p-dropdown>
-
-      <p-dropdown
-        placeholder="Renda Média Famíliar"
-        [options]="salaryList"
-        [(ngModel)]="familiarSalary"
-        optionLabel="label"
-        name="familiarSalary"
-      ></p-dropdown>
-
-      <p-dropdown
-        placeholder="Residência"
-        [options]="residenceList"
-        [(ngModel)]="residenceType"
-        optionLabel="label"
-        name="residenceType"
-      ></p-dropdown>
     </div>
 
     <div class="row">
-      <p-inputMask
-        mask="(99) 9 9999-9999"
-        [(ngModel)]="userPhone"
-        placeholder=" N° (81) 9 1234-1234"
-        name="phone"
-      ></p-inputMask>
+      <p-dropdown
+        [style]="{ width: '234px' }"
+        placeholder="Qual bairro reside?"
+        [options]="placeList"
+        [(ngModel)]="place"
+        optionLabel="label"
+        name="place"
+      ></p-dropdown>
+
+      <input
+        [style]="{ width: '300px' }"
+        id="street-input"
+        type="text"
+        pInputText
+        placeholder="Rua"
+        [(ngModel)]="street"
+        name="street"
+      />
+    </div>
+
+    <div class="row">
+      <p-dropdown
+        [style]="{ width: '300px' }"
+        placeholder="Grau de instrução"
+        [options]="gradeList"
+        [(ngModel)]="userGrade"
+        optionLabel="label"
+        name="grade"
+      ></p-dropdown>
 
       <p-calendar
+        [style]="{ width: '230px' }"
         [showIcon]="true"
         dateFormat="dd/mm/yy"
         [(ngModel)]="userBirthDate"
@@ -98,23 +152,29 @@
     </div>
 
     <div class="row">
-      <p-dropdown
-        placeholder="Grau de instrução"
-        [options]="gradeList"
-        [(ngModel)]="userGrade"
-        optionLabel="label"
-        name="grade"
-      ></p-dropdown>
-
       <input
-        id="work-input"
+        [style]="{ width: '100px' }"
+        id="number-input"
         type="text"
         pInputText
-        placeholder="Profissão"
-        [(ngModel)]="userWork"
-        name="userWork"
+        placeholder="Número"
+        [(ngModel)]="numberStreet"
+        [pKeyFilter]="'pint'"
+        name="numberStreet"
       />
 
+      <input
+        [style]="{ width: '415px' }"
+        id="complement-input"
+        type="text"
+        pInputText
+        placeholder="Complemento"
+        [(ngModel)]="complement"
+        name="complement"
+      />
+    </div>
+
+    <div class="row">
       <p-dropdown
         placeholder="Estado civil"
         [options]="civilStateList"
@@ -122,30 +182,37 @@
         optionLabel="label"
         name="civilState"
       ></p-dropdown>
-    </div>
 
-    <input
-      id="email-input"
-      type="text"
-      pInputText
-      placeholder="Email"
-      [(ngModel)]="userEmail"
-      [pKeyFilter]="'email'"
-      name="email"
-    />
+      <p-dropdown
+        placeholder="Residência"
+        [options]="residenceList"
+        [(ngModel)]="residenceType"
+        optionLabel="label"
+        name="residenceType"
+      ></p-dropdown>
+
+      <p-inputMask
+        mask="(99) 9 9999-9999"
+        [(ngModel)]="userPhone"
+        placeholder=" N° (81) 9 1234-1234"
+        name="phone"
+      ></p-inputMask>
+    </div>
 
     <div class="row">
       <input
-        id="cod-input"
+        [style]="{ width: '300px' }"
+        id="email-input"
         type="text"
         pInputText
-        placeholder="Código único"
-        [(ngModel)]="userId"
-        [pKeyFilter]="'pint'"
-        name="cod"
+        placeholder="Email"
+        [(ngModel)]="userEmail"
+        [pKeyFilter]="'email'"
+        name="email"
       />
 
       <p-calendar
+        [style]="{ width: '220px' }"
         [showIcon]="true"
         dateFormat="dd/mm/yy"
         [(ngModel)]="userStartDate"
