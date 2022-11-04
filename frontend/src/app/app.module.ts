@@ -27,6 +27,7 @@ import { KeyFilterModule } from 'primeng/keyfilter';
 import { DropdownModule } from 'primeng/dropdown';
 import { CreatePartnerComponent } from './pages/create-partner/create-partner.component';
 import { ShowRoutesComponent } from './components/show-routes/show-routes.component';
+import { HttpClientModule } from '@angular/common/http';
 
 registerLocaleData(ptBr);
 
@@ -40,6 +41,7 @@ registerLocaleData(ptBr);
     ShowRoutesComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,

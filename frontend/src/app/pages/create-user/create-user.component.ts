@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserServiceService } from 'src/app/services/user-service.service';
 
 @Component({
   selector: 'app-create-user',
@@ -145,7 +146,15 @@ export class CreateUserComponent implements OnInit {
     { label: 'Não sei' },
   ];
 
-  constructor() {}
+  constructor(private service: UserServiceService) {}
+
+  consultaCEP() {
+    const cep = '';
+
+    if (cep != null && cep !== '') {
+      this.service.consultaCEP(cep)?.subscribe((dados) => console.log(dados));
+    }
+  }
 
   onSubmit(form: any) {
     console.log(form);
