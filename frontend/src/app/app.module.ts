@@ -2,7 +2,7 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 
@@ -58,6 +58,7 @@ registerLocaleData(ptBr);
     InputTextareaModule,
     KeyFilterModule,
     DropdownModule,
+    ReactiveFormsModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt' }],
   bootstrap: [AppComponent],

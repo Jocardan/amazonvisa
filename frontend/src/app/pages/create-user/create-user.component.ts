@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserServiceService } from 'src/app/services/user-service.service';
 
 @Component({
@@ -7,38 +8,9 @@ import { UserServiceService } from 'src/app/services/user-service.service';
   styleUrls: ['./create-user.component.scss'],
 })
 export class CreateUserComponent implements OnInit {
-  userName: any;
-  userWork: any;
-
-  userBirthDate: any;
-  userStartDate: any;
-
-  userPhone: any;
-  userCPF: any;
-  userRG: any;
+  form: FormGroup;
 
   autoResize: boolean = true;
-
-  userEmail: any;
-  userId: any;
-
-  userSex: any;
-  userStatus: any;
-  userGrade: any;
-
-  aux: boolean = false;
-  moradores: number = 0;
-  familiarSalary: number = 0;
-  place: string = '';
-  residenceType: number = 0;
-  religion: string = '';
-
-  cep: any;
-  state: any;
-  city: any;
-  street: any;
-  numberStreet: any;
-  complement: any;
 
   religionList: any[] = [
     { label: 'Adventista do 7° dia', value: 'Adventista do 7° dia' },
@@ -146,7 +118,49 @@ export class CreateUserComponent implements OnInit {
     { label: 'Não sei' },
   ];
 
-  constructor(private service: UserServiceService) {}
+  constructor(
+    private service: UserServiceService,
+    private formBuilder: FormBuilder
+  ) {
+    this.form = this.formBuilder.group({
+      person: this.formBuilder.group({
+        name: [null, [Validators.required, Validators.minLength(5)]],
+        cpf: [null, [Validators.required]],
+        rg: [null, [Validators.required]],
+        birthDate: [null, [Validators.required]],
+        sex: [null, [Validators.required]],
+        grade: [null, [Validators.required]],
+        civilState: [null, [Validators.required]],
+        cod: [null],
+      }),
+
+      phone: [null],
+      work: [null],
+      email: [null, Validators.email],
+      startDate: [null],
+
+      aux: [null, [Validators.required]],
+      moradores: [null, [Validators.required]],
+      familiarSalary: [null, [Validators.required]],
+      residenceType: [null, [Validators.required]],
+      religion: [null, [Validators.required]],
+
+      address: this.formBuilder.group({
+        bairro: [null],
+        cep: [null],
+        state: [null],
+        city: [null],
+        street: [null],
+        numberStreet: [null],
+        complement: [null],
+      }),
+    });
+  }
+
+  verifyValidTouched(field: string) {
+    this.form.get(field);
+    return !this.form.get(field)?.valid && this.form.get(field)?.touched;
+  }
 
   consultaCEP() {
     const cep = '';
@@ -156,8 +170,8 @@ export class CreateUserComponent implements OnInit {
     }
   }
 
-  onSubmit(form: any) {
-    console.log(form);
+  onSubmit() {
+    console.log(this.form.value);
   }
 
   ngOnInit(): void {}
