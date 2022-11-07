@@ -12,9 +12,12 @@ import { UserServiceService } from './services/user-service.service';
 // Modules
 import { PrimengModule } from './modules/primeng.module';
 
+// Components
+import { NotFoundComponent } from './components/not-found/not-found.component';
+
 @NgModule({
   providers: [UserServiceService],
-  declarations: [],
+  declarations: [NotFoundComponent],
   imports: [
     RouterModule,
     BrowserModule,

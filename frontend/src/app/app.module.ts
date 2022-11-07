@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HomeComponent } from './pages/home/home.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { CreateUserComponent } from './pages/create-user/create-user.component';
 import { CreatePartnerComponent } from './pages/create-partner/create-partner.component';
 import { ShowRoutesComponent } from './components/show-routes/show-routes.component';
@@ -19,7 +18,6 @@ registerLocaleData(ptBr);
   declarations: [
     AppComponent,
     HomeComponent,
-    NotFoundComponent,
     CreateUserComponent,
     CreatePartnerComponent,
     ShowRoutesComponent,
