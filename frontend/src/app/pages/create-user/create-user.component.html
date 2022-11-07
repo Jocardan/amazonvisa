@@ -367,39 +367,43 @@
       </div>
     </div>
 
-    <div
-      class="table"
-      [style]="{ marginTop: '1rem' }"
-      *ngFor="let _ of [].constructor(childrenNumber); let i = index"
-      formArrayName="children"
-    >
-      <input
-        [style]="{ width: '100%' }"
-        id="fullName-input"
-        type="text"
-        pInputText
-        placeholder="Nome do(a) filho(a)"
-        formControlName="name"
-      />
+    <div class="table" [style]="{ marginTop: '1rem' }" formArrayName="children">
+      <div
+        *ngFor="
+          let _ of [].constructor(form.controls['children'].value.length);
+          let i = index
+        "
+      >
+        <div [formGroupName]="i">
+          <input
+            [style]="{ width: '100%' }"
+            id="fullName-input"
+            type="text"
+            pInputText
+            placeholder="Nome do(a) filho(a)"
+            formControlName="name"
+          />
 
-      <div class="row">
-        <p-dropdown
-          [style]="{ width: '300px' }"
-          placeholder="Grau de instrução"
-          [options]="gradeList"
-          optionLabel="label"
-          formControlName="grade"
-        ></p-dropdown>
+          <div class="row">
+            <p-dropdown
+              [style]="{ width: '300px' }"
+              placeholder="Grau de instrução"
+              [options]="gradeList"
+              optionLabel="label"
+              formControlName="grade"
+            ></p-dropdown>
 
-        <p-calendar
-          [style]="{ width: '230px' }"
-          [showIcon]="true"
-          dateFormat="dd/mm/yy"
-          [readonlyInput]="true"
-          inputId="birthDate-input"
-          placeholder="Data de nascimento"
-          formControlName="birthDate"
-        ></p-calendar>
+            <p-calendar
+              [style]="{ width: '230px' }"
+              [showIcon]="true"
+              dateFormat="dd/mm/yy"
+              [readonlyInput]="true"
+              inputId="birthDate-input"
+              placeholder="Data de nascimento"
+              formControlName="birthDate"
+            ></p-calendar>
+          </div>
+        </div>
       </div>
     </div>
   </form>

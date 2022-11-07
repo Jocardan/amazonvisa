@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserServiceService } from 'src/app/services/user-service.service';
 
 @Component({
@@ -157,13 +157,7 @@ export class CreateUserComponent implements OnInit {
         city: [null],
       }),
 
-      children: this.formBuilder.array([
-        this.formBuilder.group({
-          name: [null],
-          grade: [null],
-          birthDate: [null],
-        }),
-      ]),
+      children: this.formBuilder.array([]),
 
       phone: [null],
       fixPhone: [null],
@@ -198,12 +192,16 @@ export class CreateUserComponent implements OnInit {
 
   changeChildren(condition: boolean) {
     if (condition) {
-      this.childrenNumber++;
+      (<FormArray>this.form.controls['children']).push(
+        this.formBuilder.group({
+          name: [null],
+          grade: [null],
+          birthDate: [null],
+        })
+      );
     } else {
-      this.childrenNumber =
-        this.childrenNumber != 0 ? this.childrenNumber - 1 : 0;
+      (<FormArray>this.form.controls['children']).removeAt(-1);
     }
-    console.log(this.childrenNumber);
   }
 
   consultaCEP() {
@@ -215,7 +213,7 @@ export class CreateUserComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.value);
+    console.log(this.form.controls['children'].value);
   }
 
   ngOnInit(): void {}
