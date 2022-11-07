@@ -11,6 +11,8 @@ export class CreateUserComponent implements OnInit {
   form: FormGroup;
 
   autoResize: boolean = true;
+  verify: boolean = false;
+  childrenNumber: number = 0;
 
   religionList: any[] = [
     { label: 'Adventista do 7° dia', value: 'Adventista do 7° dia' },
@@ -130,20 +132,9 @@ export class CreateUserComponent implements OnInit {
         birthDate: [null, [Validators.required]],
         sex: [null, [Validators.required]],
         grade: [null, [Validators.required]],
-        civilState: [null, [Validators.required]],
+        civilState: ['', [Validators.required]],
         cod: [null],
       }),
-
-      phone: [null],
-      work: [null],
-      email: [null, Validators.email],
-      startDate: [null],
-
-      aux: [null, [Validators.required]],
-      moradores: [null, [Validators.required]],
-      familiarSalary: [null, [Validators.required]],
-      residenceType: [null, [Validators.required]],
-      religion: [null, [Validators.required]],
 
       address: this.formBuilder.group({
         bairro: [null],
@@ -154,12 +145,65 @@ export class CreateUserComponent implements OnInit {
         numberStreet: [null],
         complement: [null],
       }),
+
+      relationship: this.formBuilder.group({
+        name: [null],
+        cpf: [null],
+        rg: [null],
+        birthDate: [null],
+        grade: [null],
+        work: [null],
+        state: [null],
+        city: [null],
+      }),
+
+      children: this.formBuilder.array([
+        this.formBuilder.group({
+          name: [null],
+          grade: [null],
+          birthDate: [null],
+        }),
+      ]),
+
+      phone: [null],
+      fixPhone: [null],
+      work: [null],
+      email: [null, Validators.email],
+      startDate: [null],
+
+      aux: [null, [Validators.required]],
+      moradores: [null, [Validators.required]],
+      familiarSalary: [null, [Validators.required]],
+      residenceType: [null, [Validators.required]],
+      religion: [null, [Validators.required]],
+
+      others: [{ value: 0, disabled: true }, Validators.required],
+      year: [null],
+      month: [null],
     });
   }
 
   verifyValidTouched(field: string) {
     this.form.get(field);
     return !this.form.get(field)?.valid && this.form.get(field)?.touched;
+  }
+
+  changeCondition(condition: boolean, field: string) {
+    if (condition) {
+      this.form.controls[field].enable();
+    } else {
+      this.form.controls[field].disable();
+    }
+  }
+
+  changeChildren(condition: boolean) {
+    if (condition) {
+      this.childrenNumber++;
+    } else {
+      this.childrenNumber =
+        this.childrenNumber != 0 ? this.childrenNumber - 1 : 0;
+    }
+    console.log(this.childrenNumber);
   }
 
   consultaCEP() {

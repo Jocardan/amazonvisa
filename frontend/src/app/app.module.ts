@@ -20,11 +20,13 @@ import { DialogModule } from 'primeng/dialog';
 import { DividerModule } from 'primeng/divider';
 import { CalendarModule } from 'primeng/calendar';
 import { CreateUserComponent } from './pages/create-user/create-user.component';
-
+import { CheckboxModule } from 'primeng/checkbox';
 import { InputMaskModule } from 'primeng/inputmask';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import { DropdownModule } from 'primeng/dropdown';
+import { ChipsModule } from 'primeng/chips';
+
 import { CreatePartnerComponent } from './pages/create-partner/create-partner.component';
 import { ShowRoutesComponent } from './components/show-routes/show-routes.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -59,6 +61,8 @@ registerLocaleData(ptBr);
     KeyFilterModule,
     DropdownModule,
     ReactiveFormsModule,
+    CheckboxModule,
+    ChipsModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt' }],
   bootstrap: [AppComponent],
