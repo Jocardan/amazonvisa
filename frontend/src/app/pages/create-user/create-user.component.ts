@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserServiceService } from 'src/app/services/user-service.service';
+import { UserServiceService } from 'src/app/shared/services/user-service.service';
 
 @Component({
   selector: 'app-create-user',
@@ -217,7 +217,7 @@ export class CreateUserComponent implements OnInit {
   }
 
   backButton() {
-    console.log('Voltou')
+    console.log('Voltou');
   }
 
   ngOnInit(): void {}

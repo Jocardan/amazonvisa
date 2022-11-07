@@ -1,4 +1,4 @@
-import { UserServiceService } from 'src/app/services/user-service.service';
+import { UserServiceService } from 'src/app/shared/services/user-service.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Table } from 'primeng/table';
 import { PrimeNGConfig } from 'primeng/api';
