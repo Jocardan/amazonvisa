@@ -1,5 +1,14 @@
 <div class="container">
-  <h1>Cadastrar afiliado</h1>
+  <header>
+    <h1>Cadastrar afiliado</h1>
+    <button
+      (click)="backButton()"
+      pButton
+      label="Voltar"
+      routerLink="/"
+      class="p-button p-component ml-auto align-self-center"
+    ></button>
+  </header>
   <form class="form" (ngSubmit)="onSubmit()" [formGroup]="form">
     <div class="table">
       <div formGroupName="person">
