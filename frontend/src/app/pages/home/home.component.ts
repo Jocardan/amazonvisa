@@ -2,7 +2,8 @@ import { UserServiceService } from 'src/app/shared/services/user-service.service
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Table } from 'primeng/table';
 import { PrimeNGConfig } from 'primeng/api';
-import { ShowRoutesComponent } from '../../components/show-routes/show-routes.component';
+import { ShowRoutesComponent } from '../../shared/components/show-routes/show-routes.component';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CreateUserComponent } from './pages/create-user/create-user.component';
 import { CreatePartnerComponent } from './pages/create-partner/create-partner.component';
-import { ShowRoutesComponent } from './components/show-routes/show-routes.component';
 
 import { SharedModule } from './shared/shared.module';
 
@@ -20,7 +19,6 @@ registerLocaleData(ptBr);
     HomeComponent,
     CreateUserComponent,
     CreatePartnerComponent,
-    ShowRoutesComponent,
   ],
   imports: [AppRoutingModule, SharedModule],
   providers: [{ provide: LOCALE_ID, useValue: 'pt' }],

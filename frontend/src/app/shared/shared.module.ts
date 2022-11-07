@@ -14,10 +14,11 @@ import { PrimengModule } from './modules/primeng.module';
 
 // Components
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ShowRoutesComponent } from './components/show-routes/show-routes.component';
 
 @NgModule({
   providers: [UserServiceService],
-  declarations: [NotFoundComponent],
+  declarations: [NotFoundComponent, ShowRoutesComponent],
   imports: [
     RouterModule,
     BrowserModule,
@@ -31,6 +32,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     PrimengModule,
     FormsModule,
     ReactiveFormsModule,
+    ShowRoutesComponent,
   ],
 })
 export class SharedModule {}
