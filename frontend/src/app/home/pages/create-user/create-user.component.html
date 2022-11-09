@@ -57,7 +57,7 @@
         <p-dropdown
           [style]="{ width: '150px' }"
           placeholder="Sexo"
-          [options]="sexList"
+          [options]="formList[6]"
           optionLabel="label"
           formControlName="sex"
         ></p-dropdown>
@@ -112,7 +112,7 @@
         <p-dropdown
           [style]="{ width: '333px' }"
           placeholder="Religião"
-          [options]="religionList"
+          [options]="formList[3]"
           optionLabel="label"
           formControlName="religion"
         ></p-dropdown>
@@ -122,7 +122,7 @@
         <p-dropdown
           [style]="{ width: '234px' }"
           placeholder="Qual bairro reside?"
-          [options]="placeList"
+          [options]="formList[2]"
           optionLabel="label"
           formControlName="bairro"
         ></p-dropdown>
@@ -141,7 +141,7 @@
         <p-dropdown
           [style]="{ width: '300px' }"
           placeholder="Grau de instrução"
-          [options]="gradeList"
+          [options]="formList[1]"
           optionLabel="label"
           formControlName="grade"
         ></p-dropdown>
@@ -182,7 +182,7 @@
         <div formGroupName="person">
           <p-dropdown
             placeholder="Estado civil"
-            [options]="civilStateList"
+            [options]="formList[0]"
             optionLabel="label"
             formControlName="civilState"
           ></p-dropdown>
@@ -190,7 +190,7 @@
 
         <p-dropdown
           placeholder="Residência"
-          [options]="residenceList"
+          [options]="formList[4]"
           optionLabel="label"
           formControlName="residenceType"
         ></p-dropdown>
@@ -206,14 +206,14 @@
         <span>Recebe bolsa família?</span>
         <p-dropdown
           placeholder="Não"
-          [options]="yesNo"
+          [options]="formList[7]"
           optionLabel="label"
           formControlName="aux"
         ></p-dropdown>
 
         <p-dropdown
           placeholder="Renda familiar"
-          [options]="salaryList"
+          [options]="formList[5]"
           optionLabel="label"
           formControlName="familiarSalary"
         ></p-dropdown>
@@ -312,7 +312,7 @@
           <p-dropdown
             [style]="{ width: '300px' }"
             placeholder="Grau de instrução"
-            [options]="gradeList"
+            [options]="formList[1]"
             optionLabel="label"
             formControlName="grade"
           ></p-dropdown>
@@ -397,7 +397,7 @@
             <p-dropdown
               [style]="{ width: '300px' }"
               placeholder="Grau de instrução"
-              [options]="gradeList"
+              [options]="formList[1]"
               optionLabel="label"
               formControlName="grade"
             ></p-dropdown>
