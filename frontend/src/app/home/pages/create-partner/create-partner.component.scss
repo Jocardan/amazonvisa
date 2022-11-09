@@ -1,0 +1,25 @@
+.container {
+  font-family: var(--font-family);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2em;
+
+  h1 {
+    color: var(--blue-600);
+  }
+
+  .form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1em;
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  button {
+    float: right;
+  }
+}

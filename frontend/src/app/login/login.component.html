@@ -1,0 +1,30 @@
+<p-panel header="Entrar no sistema Amazonvisa">
+  <div class="content">
+    <div class="img-box"></div>
+    <div class="login-fields">
+      <h3>Identifique-se com:</h3>
+      <form [formGroup]="formLogin" (ngSubmit)="signIn()">
+        <span class="p-float-label">
+          <input
+            pInputText
+            type="text"
+            id="cpf-input-login"
+            formControlName="nome"
+          />
+          <label for="cpf-input-login">Digite o CPF do usuário</label>
+        </span>
+        <span class="p-float-label">
+          <input
+            pInputText
+            type="password"
+            id="password-input-login"
+            formControlName="senha"
+          />
+          <label for="password-input-login">Digite a senha do usuário</label>
+        </span>
+      </form>
+
+      <p-button type="submit" (click)="signIn()"> Entrar </p-button>
+    </div>
+  </div>
+</p-panel>

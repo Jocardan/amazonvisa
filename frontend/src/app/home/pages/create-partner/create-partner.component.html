@@ -1,0 +1,55 @@
+<div class="container">
+  <h1>Cadastrar parceiro</h1>
+  <div class="form">
+    <input
+      id="fullName-input"
+      type="text"
+      pInputText
+      placeholder="Nome do estabelecimento"
+      [(ngModel)]="partnerName"
+    />
+
+    <div class="row">
+      <p-inputMask
+        mask="99.999.999"
+        [(ngModel)]="partnerCNPJ"
+        placeholder="CNPJ"
+      ></p-inputMask>
+
+      <p-inputMask
+        [style]="{ width: '250px' }"
+        mask="999.999.999-99"
+        [(ngModel)]="partnerCPF"
+        placeholder="CPF do responsável"
+      ></p-inputMask>
+    </div>
+
+    <div class="row">
+      <p-inputMask
+        mask="(99) 9 9999-9999"
+        [(ngModel)]="partnerContact"
+        placeholder=" N° (81) 9 1234-1234"
+      ></p-inputMask>
+
+      <input
+        id="address-input"
+        type="text"
+        pInputText
+        placeholder="Endereço"
+        [(ngModel)]="partnerAddress"
+      />
+    </div>
+  </div>
+
+  <textarea
+    [style]="{ marginTop: '1em' }"
+    [rows]="1"
+    [cols]="22"
+    placeholder="Descrição"
+    [autoResize]="autoResize"
+    [(ngModel)]="partnerDescription"
+    pInputTextarea
+  ></textarea>
+
+  <button pButton type="button">Cadastrar</button>
+</div>
