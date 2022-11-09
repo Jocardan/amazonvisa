@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       if (!user) alert('Nome de usuário ou senha errado');
       else {
         sessionStorage.setItem('userLogged', localStorage.getItem(user)!);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/']);
       }
     }
   }

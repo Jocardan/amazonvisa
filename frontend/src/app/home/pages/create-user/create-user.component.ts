@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from 'src/app/shared/services/user.service';
+import { HomeFacade } from '../../home.facade';
 
 import {
   civilStateList,
@@ -26,7 +26,7 @@ export class CreateUserComponent implements OnInit {
   autoResize: boolean = true;
   verify: boolean = false;
 
-  constructor(private service: UserService, private formBuilder: FormBuilder) {
+  constructor(private facade: HomeFacade, private formBuilder: FormBuilder) {
     this.formList = [
       civilStateList,
       gradeList,
@@ -118,11 +118,17 @@ export class CreateUserComponent implements OnInit {
     }
   }
 
-  consultaCEP() {
-    const cep = '';
-
+  consultaCEP(cep: string) {
+    cep = cep.replace(/\D/g, '');
     if (cep != null && cep !== '') {
-      this.service.consultaCEP(cep)?.subscribe((dados) => console.log(dados));
+      const validacep = /^[0-9]{8}$/;
+      if (validacep.test(cep)) {
+        return this.facade.getAddress(cep);
+      } else {
+        return 'CEP inválido';
+      }
+    } else {
+      return 'Digite CEP';
     }
   }
 
