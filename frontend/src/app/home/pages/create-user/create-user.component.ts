@@ -130,9 +130,5 @@ export class CreateUserComponent implements OnInit {
     console.log(this.form.controls['children'].value);
   }
 
-  backButton() {
-    console.log('Voltou');
-  }
-
   ngOnInit(): void {}
 }
