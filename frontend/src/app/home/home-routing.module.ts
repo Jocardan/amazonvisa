@@ -7,10 +7,10 @@ import { HomeComponent } from './home.component';
 import { NotFoundComponent } from 'src/app/shared/components/not-found/not-found.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'create-user', component: CreateUserComponent },
   { path: 'create-partner', component: CreatePartnerComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];
 

@@ -14,6 +14,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import { DropdownModule } from 'primeng/dropdown';
 import { ChipsModule } from 'primeng/chips';
+import { PanelModule } from 'primeng/panel';
 
 @NgModule({
   providers: [],
@@ -33,6 +34,7 @@ import { ChipsModule } from 'primeng/chips';
     ChipsModule,
     AutoCompleteModule,
     TableModule,
+    PanelModule,
   ],
   exports: [
     ButtonModule,
@@ -49,6 +51,7 @@ import { ChipsModule } from 'primeng/chips';
     ChipsModule,
     AutoCompleteModule,
     TableModule,
+    PanelModule,
   ],
 })
 export class PrimengModule {}
