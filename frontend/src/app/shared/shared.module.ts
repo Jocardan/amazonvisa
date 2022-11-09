@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Services
-import { UserServiceService } from './services/user-service.service';
+import { UserService } from './services/user.service';
 
 // Modules
 import { PrimengModule } from './modules/primeng.module';
@@ -17,7 +17,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ShowRoutesComponent } from './components/show-routes/show-routes.component';
 
 @NgModule({
-  providers: [UserServiceService],
+  providers: [UserService],
   declarations: [NotFoundComponent, ShowRoutesComponent],
   imports: [
     RouterModule,

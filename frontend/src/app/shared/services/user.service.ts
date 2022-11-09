@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UserServiceService {
+export class UserService {
   data = [
     {
       name: 'hugo',
@@ -28,21 +27,10 @@ export class UserServiceService {
     },
   ];
 
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
   getUsers() {
     return this.data;
-  }
-
-  consultaCEP(cep: string) {
-    cep = cep.replace(/\D/g, '');
-    if (cep !== '') {
-      const validacep = /^[0-9]{8}$/;
-      if (validacep.test(cep)) {
-        return this.http.get(`//viacep.com.br/ws/${cep}/json`);
-      }
-    }
-    return;
   }
 
   public pt = {
