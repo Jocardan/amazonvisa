@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserServiceService } from 'src/app/shared/services/user-service.service';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-create-user',
@@ -120,10 +120,7 @@ export class CreateUserComponent implements OnInit {
     { label: 'Não sei' },
   ];
 
-  constructor(
-    private service: UserServiceService,
-    private formBuilder: FormBuilder
-  ) {
+  constructor(private service: UserService, private formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
       person: this.formBuilder.group({
         name: [null, [Validators.required, Validators.minLength(5)]],

@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Services
-import { UserServiceService } from './services/user-service.service';
+import { UserServiceService } from './services/user.service';
 
 // Modules
 import { PrimengModule } from './modules/primeng.module';

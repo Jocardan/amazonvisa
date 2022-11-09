@@ -8,13 +8,13 @@ import { SharedModule } from './shared/shared.module';
 
 import ptBr from '@angular/common/locales/pt';
 import { HomeModule } from './home/home.module';
-import { LoginModule } from './login/login.module';
+import { UserModule } from './user/user.module';
 
 registerLocaleData(ptBr);
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [AppRoutingModule, SharedModule, LoginModule, HomeModule],
+  imports: [AppRoutingModule, SharedModule, UserModule, HomeModule],
   providers: [{ provide: LOCALE_ID, useValue: 'pt' }],
   bootstrap: [AppComponent],
 })

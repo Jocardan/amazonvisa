@@ -1,4 +1,4 @@
-import { UserServiceService } from 'src/app/shared/services/user-service.service';
+import { UserService } from 'src/app/shared/services/user.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Table } from 'primeng/table';
 import { PrimeNGConfig } from 'primeng/api';
@@ -24,10 +24,7 @@ export class HomeComponent implements OnInit {
   language: any;
   @ViewChild('modalChild') modalChild: ShowRoutesComponent | undefined;
 
-  constructor(
-    private userService: UserServiceService,
-    private config: PrimeNGConfig
-  ) {
+  constructor(private userService: UserService, private config: PrimeNGConfig) {
     this.users = userService.getUsers();
     this.moneyBox = 1273;
     this.language = userService.pt;
