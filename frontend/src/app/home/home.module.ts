@@ -9,6 +9,7 @@ import { HomeState } from './state/home.state';
 import { HomeFacade } from './home.facade';
 import { homeInitializerProvider } from './home.initializer';
 import { HomeApi } from './api/home.api';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   providers: [HomeState, HomeFacade, homeInitializerProvider, HomeApi],
@@ -16,6 +17,7 @@ import { HomeApi } from './api/home.api';
     UserTableComponent,
     CreatePartnerComponent,
     CreateUserComponent,
+    HomeComponent,
   ],
   imports: [HomeRoutingModule, SharedModule],
 })
