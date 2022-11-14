@@ -8,9 +8,10 @@ import { SharedModule } from '../shared/shared.module';
 import { HomeState } from './state/home.state';
 import { HomeFacade } from './home.facade';
 import { homeInitializerProvider } from './home.initializer';
+import { HomeApi } from './api/home.api';
 
 @NgModule({
-  providers: [HomeState, HomeFacade, homeInitializerProvider],
+  providers: [HomeState, HomeFacade, homeInitializerProvider, HomeApi],
   declarations: [
     UserTableComponent,
     CreatePartnerComponent,
