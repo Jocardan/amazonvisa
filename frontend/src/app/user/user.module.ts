@@ -6,10 +6,11 @@ import { SharedModule } from '../shared/shared.module';
 import { UserState } from './state/user.state';
 import { UserFacade } from './user.facade';
 import { userInitializerProvider } from './user.initializer';
+import { UserPageComponent } from './pages/user-page/user-page.component';
 
 @NgModule({
   providers: [UserState, UserFacade, userInitializerProvider],
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, UserPageComponent],
   imports: [CommonModule, UserRoutingModule, SharedModule],
 })
 export class UserModule {}
