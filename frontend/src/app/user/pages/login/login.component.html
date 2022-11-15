@@ -9,18 +9,40 @@
             pInputText
             type="text"
             id="cpf-input-login"
-            formControlName="nome"
+            formControlName="cpf"
           />
           <label for="cpf-input-login">Digite o CPF do usuário</label>
         </span>
+
         <span class="p-float-label">
           <input
             pInputText
             type="password"
             id="password-input-login"
-            formControlName="senha"
+            formControlName="password"
           />
           <label for="password-input-login">Digite a senha do usuário</label>
+        </span>
+
+        <span>
+          <p-radioButton
+            name="type"
+            formControlName="type"
+            value="admin"
+          ></p-radioButton>
+          <i class="pi pi-key" style="font-size: 2rem"></i>
+          <p-radioButton
+            name="type"
+            formControlName="type"
+            value="user"
+          ></p-radioButton>
+          <i class="pi pi-users" style="font-size: 2rem"></i>
+          <p-radioButton
+            name="type"
+            formControlName="type"
+            value="partner"
+          ></p-radioButton>
+          <i class="pi pi-building" style="font-size: 2rem"></i>
         </span>
       </form>
 

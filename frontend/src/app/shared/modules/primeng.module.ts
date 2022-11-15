@@ -16,12 +16,14 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ChipsModule } from 'primeng/chips';
 import { PanelModule } from 'primeng/panel';
 import { SkeletonModule } from 'primeng/skeleton';
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 @NgModule({
   providers: [],
   declarations: [],
   imports: [
     ButtonModule,
+    RadioButtonModule,
     InputTextModule,
     PaginatorModule,
     DialogModule,
@@ -41,6 +43,7 @@ import { SkeletonModule } from 'primeng/skeleton';
   exports: [
     ButtonModule,
     InputTextModule,
+    RadioButtonModule,
     PaginatorModule,
     DialogModule,
     DividerModule,
