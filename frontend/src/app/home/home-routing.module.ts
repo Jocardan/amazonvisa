@@ -5,9 +5,10 @@ import { CreatePartnerComponent } from './pages/create-partner/create-partner.co
 import { CreateUserComponent } from './pages/create-user/create-user.component';
 import { UserTableComponent } from './pages/user-table/user-table.component';
 import { NotFoundComponent } from 'src/app/shared/components/not-found/not-found.component';
+import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/list-user', pathMatch: 'full' },
+  { path: '', component: HomeComponent },
   { path: 'list-user', component: UserTableComponent },
   { path: 'create-user', component: CreateUserComponent },
   { path: 'create-partner', component: CreatePartnerComponent },

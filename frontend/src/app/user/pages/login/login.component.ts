@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,14 +13,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private router: Router) {}
+  type: string = 'user';
+  constructor(private router: Router, private formBuilder: FormBuilder) {
+    this.formLogin = formBuilder.group({
+      cpf: [
+        null,
+        [
+          Validators.required,
+          Validators.minLength(11),
+          Validators.maxLength(11),
+          Validators.pattern('^[0-9]*$'),
+        ],
+      ],
+      password: [null, Validators.required],
+      type: [null, Validators.required],
+    });
+  }
+  formLogin: FormGroup;
 
   ngOnInit(): void {}
-
-  formLogin = new FormGroup({
-    nome: new FormControl(''),
-    senha: new FormControl(''),
-  });
 
   signIn() {
     // Pega os dados do form de Login
@@ -40,7 +56,7 @@ export class LoginComponent implements OnInit {
       });
       if (!user) alert('Nome de usuário ou senha errado');
       else {
-        sessionStorage.setItem('userLogged', localStorage.getItem(user)!);
+        //sessionStorage.setItem('userLogged', localStorage.getItem(user)!);
         this.router.navigate(['/']);
       }
     }

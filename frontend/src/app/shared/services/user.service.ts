@@ -27,7 +27,34 @@ export class UserService {
     },
   ];
 
+  userData = [
+    {
+      dueDate: 'MM/YYYY',
+      status: 'pendente',
+      paymentDate: 'MM/YYYY',
+    },
+    {
+      dueDate: 'mM/YYYy',
+      status: 'adimplente',
+      paymentDate: 'mM/YYYy',
+    },
+    {
+      dueDate: 'Mm/yYYy',
+      status: 'inadimplente',
+      paymentDate: 'Mm/yYYy',
+    },
+    {
+      dueDate: 'mm/yyYy',
+      status: 'desativado',
+      paymentDate: 'mm/yyYy',
+    },
+  ];
+
   constructor() {}
+
+  getUserData() {
+    return this.userData;
+  }
 
   getUsers() {
     return this.data;

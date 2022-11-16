@@ -15,12 +15,15 @@ import { KeyFilterModule } from 'primeng/keyfilter';
 import { DropdownModule } from 'primeng/dropdown';
 import { ChipsModule } from 'primeng/chips';
 import { PanelModule } from 'primeng/panel';
+import { SkeletonModule } from 'primeng/skeleton';
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 @NgModule({
   providers: [],
   declarations: [],
   imports: [
     ButtonModule,
+    RadioButtonModule,
     InputTextModule,
     PaginatorModule,
     DialogModule,
@@ -35,10 +38,12 @@ import { PanelModule } from 'primeng/panel';
     AutoCompleteModule,
     TableModule,
     PanelModule,
+    SkeletonModule,
   ],
   exports: [
     ButtonModule,
     InputTextModule,
+    RadioButtonModule,
     PaginatorModule,
     DialogModule,
     DividerModule,
@@ -52,6 +57,7 @@ import { PanelModule } from 'primeng/panel';
     AutoCompleteModule,
     TableModule,
     PanelModule,
+    SkeletonModule,
   ],
 })
 export class PrimengModule {}
