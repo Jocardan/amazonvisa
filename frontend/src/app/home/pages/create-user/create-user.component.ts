@@ -71,7 +71,7 @@ export class CreateUserComponent implements OnInit {
         city: [null],
       }),
 
-      children: this.formBuilder.array([]),
+      dependents: this.formBuilder.array([]),
 
       phone: [null],
       fixPhone: [null],
@@ -104,9 +104,9 @@ export class CreateUserComponent implements OnInit {
     }
   }
 
-  changeChildren(condition: boolean) {
+  changeOthers(condition: boolean) {
     if (condition) {
-      (<FormArray>this.form.controls['children']).push(
+      (<FormArray>this.form.controls['dependents']).push(
         this.formBuilder.group({
           name: [null],
           grade: [null],
@@ -114,7 +114,7 @@ export class CreateUserComponent implements OnInit {
         })
       );
     } else {
-      (<FormArray>this.form.controls['children']).removeAt(-1);
+      (<FormArray>this.form.controls['dependents']).removeAt(-1);
     }
   }
 
@@ -133,7 +133,7 @@ export class CreateUserComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.controls['children'].value);
+    console.log(this.form.controls['dependents'].value);
   }
 
   ngOnInit(): void {}

@@ -267,24 +267,24 @@
       ></p-chips>
 
       <div class="row-children">
-        <span>Informe a quantidade de filhos:</span>
+        <span>Dependentes:</span>
         <button
           iconPos="left"
           class="p-button-sm"
           pButton
           type="button"
-          (click)="changeChildren(true)"
+          (click)="changeOthers(true)"
         >
-          Adicionar filho
+          Adicionar dependente
         </button>
         <button
           iconPos="left"
           class="p-button-sm"
           pButton
           type="button"
-          (click)="changeChildren(false)"
+          (click)="changeOthers(false)"
         >
-          Remover filho
+          Remover dependente
         </button>
       </div>
     </div>
@@ -375,10 +375,10 @@
       </div>
     </div>
 
-    <div class="table" [style]="{ marginTop: '1rem' }" formArrayName="children">
+    <div class="table" [style]="{ marginTop: '1rem' }" formArrayName="dependents">
       <div
         *ngFor="
-          let _ of [].constructor(form.controls['children'].value.length);
+          let _ of [].constructor(form.controls['dependents'].value.length);
           let i = index
         "
       >
@@ -388,7 +388,7 @@
             id="fullName-input"
             type="text"
             pInputText
-            placeholder="Nome do(a) filho(a)"
+            placeholder="Nome do dependente"
             formControlName="name"
           />
 
