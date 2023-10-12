@@ -16,7 +16,7 @@ export class UserPageComponent implements OnInit {
   display: boolean = false;
   userData: {}[] = [];
   name: string = 'José Daniel';
-  situation: string = 'Adimplente';
+  situation: string = 'Ativo';
 
   showDisplay() {
     this.display = true;

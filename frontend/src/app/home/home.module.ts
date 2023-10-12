@@ -10,6 +10,7 @@ import { HomeFacade } from './home.facade';
 import { homeInitializerProvider } from './home.initializer';
 import { HomeApi } from './api/home.api';
 import { HomeComponent } from './pages/home/home.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   providers: [HomeState, HomeFacade, homeInitializerProvider, HomeApi],
@@ -19,6 +20,6 @@ import { HomeComponent } from './pages/home/home.component';
     CreateUserComponent,
     HomeComponent,
   ],
-  imports: [HomeRoutingModule, SharedModule],
+  imports: [HomeRoutingModule, SharedModule, CommonModule],
 })
 export class HomeModule {}

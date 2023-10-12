@@ -5,11 +5,11 @@ import { UserPageComponent } from './pages/user-page/user-page.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'user/:id', component: UserPageComponent },
+  { path: '', component: UserPageComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
 export class UserRoutingModule {}
