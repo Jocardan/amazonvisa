@@ -1,6 +1,6 @@
 <div class="container">
   <header>
-    <h1>Cadastrar afiliado</h1>
+    <h1>Cadastrar Associado</h1>
     <button
       pButton
       label="Voltar"
@@ -10,15 +10,289 @@
   </header>
   <form class="form" (ngSubmit)="onSubmit()" [formGroup]="form">
     <div class="table">
-      <div formGroupName="person">
+      <h3>Dados pessoais</h3>
+      <div class="row" formGroupName="person">
         <input
-          [style]="{ width: '100%' }"
+          [style]="{ width: '50rem' }"
           id="fullName-input"
           type="text"
           pInputText
           placeholder="Nome completo"
           formControlName="name"
         />
+
+        <p-calendar
+          [style]="{ width: '230px' }"
+          [showIcon]="true"
+          dateFormat="dd/mm/yy"
+          [readonlyInput]="true"
+          inputId="birthDate-input"
+          placeholder="Data de nascimento"
+          formControlName="birthDate"
+        ></p-calendar>
+      </div>
+
+      <div class="row" formGroupName="person">
+        <div class="row-children">
+          <p-inputMask
+            [style]="{ width: '110px' }"
+            mask="99.999.999"
+            placeholder="RG"
+            formControlName="rg"
+          ></p-inputMask>
+
+          <p-inputMask
+            [style]="{ width: '140px' }"
+            mask="999.999.999-99"
+            placeholder="CPF"
+            formControlName="cpf"
+          ></p-inputMask>
+        </div>
+
+        <div class="row-children">
+          <p-dropdown
+            [style]="{ width: '150px', height: '100%', alignItems: 'center' }"
+            placeholder="Sexo"
+            [options]="formList[5]"
+            optionLabel="label"
+            formControlName="sex"
+          ></p-dropdown>
+
+          <p-dropdown
+            [style]="{ width: '200px', height: '100%', alignItems: 'center' }"
+            placeholder="Estado civil"
+            [options]="formList[0]"
+            optionLabel="label"
+            formControlName="civilState"
+          ></p-dropdown>
+
+          <p-dropdown
+            [style]="{ width: '300px', height: '100%', alignItems: 'center' }"
+            placeholder="Grau de instrução"
+            [options]="formList[1]"
+            optionLabel="label"
+            formControlName="grade"
+          ></p-dropdown>
+  
+        </div>
+      </div>
+      
+      <div class="row">
+       <p-dropdown
+          [style]="{ width: '333px', height: '100%' }"
+          placeholder="Religião"
+          [options]="formList[2]"
+          optionLabel="label"
+          formControlName="religion"
+        ></p-dropdown>
+
+        <input
+          [style]="{ width: '310px' }"
+          id="email-input"
+          type="text"
+          pInputText
+          placeholder="Email"
+          [pKeyFilter]="'email'"
+          formControlName="email"
+        />
+
+        <p-inputMask
+          mask="99 9999-9999"
+          placeholder="Tel Fixo: 81 1234-1234"
+          formControlName="fixPhone"
+        ></p-inputMask>
+
+        <p-calendar
+          [style]="{ width: '220px' }"
+          [showIcon]="true"
+          dateFormat="dd/mm/yy"
+          [readonlyInput]="true"
+          inputId="startDate-input"
+          placeholder="Data de admissão"
+          formControlName="startDate"
+        ></p-calendar>
+      </div>
+
+      <div class="row-children">
+        <input
+          [style]="{ width: '330px'}"
+          id="work-input"
+          type="text"
+          pInputText
+          placeholder="Profissão"
+          formControlName="work"
+        />
+
+        <p-inputMask
+          mask="99 9999-9999"
+          placeholder="Telefone Celular 1"
+          formControlName="phone"
+        ></p-inputMask>
+
+        <p-inputMask
+          mask="99 9999-9999"
+          placeholder="Telefone Celular 2"
+          formControlName="phone"
+        ></p-inputMask>
+      </div>
+
+      <div 
+        *ngIf="form.value.person.civilState.label === formList[0][4].value
+        ||form.value.person.civilState.label === formList[0][1].value"
+      >
+        <h3>Dados do cônjugue</h3>
+        <div class="table" formGroupName="relationship">
+          <div class="row">
+            <input
+              [style]="{ width: '50rem' }"
+              id="fullName-input"
+              type="text"
+              pInputText
+              placeholder="Nome completo"
+              formControlName="name"
+            />
+
+            <p-calendar
+              [style]="{ width: '230px' }"
+              [showIcon]="true"
+              dateFormat="dd/mm/yy"
+              [readonlyInput]="true"
+              inputId="birthDate-input"
+              placeholder="Data de nascimento"
+              formControlName="birthDate"
+            ></p-calendar>
+          </div>
+
+          <div class="row">
+            <div class="row-children">
+              <p-inputMask
+                [style]="{ width: '110px' }"
+                mask="99.999.999"
+                placeholder="RG"
+                formControlName="rg"
+              ></p-inputMask>
+
+              <p-inputMask
+                [style]="{ width: '140px' }"
+                mask="999.999.999-99"
+                placeholder="CPF"
+                formControlName="cpf"
+              ></p-inputMask>
+            </div>
+
+            <div class="row-children">
+              <p-dropdown
+                [style]="{ width: '300px', height: '100%' }"
+                placeholder="Grau de instrução"
+                [options]="formList[1]"
+                optionLabel="label"
+                formControlName="grade"
+              ></p-dropdown>
+
+              <input
+                [style]="{ width: '330px' }"
+                id="work-input"
+                type="text"
+                pInputText
+                placeholder="Profissão"
+                formControlName="work"
+              />
+            </div>
+         </div>
+
+          <div class="row-children">
+            <p-dropdown
+              [style]="{ width: '250px', height: '100%', alignItems: 'center' }"
+              placeholder="Estado"
+              [options]="formList[7]"
+              optionLabel="label"
+              formControlName="state"
+            ></p-dropdown>
+
+            <input
+              [style]="{ width: '300px' }"
+              id="city-input"
+              type="text"
+              pInputText
+              placeholder="Cidade"
+              formControlName="city"
+            />
+          </div>
+        </div>
+      </div>
+
+      <h3>Endereço</h3>
+      <div class="row" formGroupName="address">
+        <p-inputMask
+          [style]="{ width: '110px' }"
+          mask="99999-999"
+          placeholder="CEP"
+          formControlName="cep"
+        ></p-inputMask>
+
+        <p-dropdown
+          [style]="{ width: '250px', height: '100%', alignItems: 'center' }"
+          placeholder="Estado"
+          [options]="formList[7]"
+          optionLabel="label"
+          formControlName="state"
+        ></p-dropdown>
+
+        <input
+          [style]="{ width: '330px'} "
+          id="city-input"
+          type="text"
+          pInputText
+          placeholder="Cidade"
+          formControlName="city"
+        />
+
+        <input
+          [style]="{ width: '330px'} "
+          id="burgh"
+          type="text"
+          pInputText
+          placeholder="Bairro"
+          formControlName="bairro"
+        />
+      </div>
+
+      <div class="row" formGroupName="address">
+        <input
+          [style]="{ width: '380px'} "
+          id="street-input"
+          type="text"
+          pInputText
+          placeholder="Rua"
+          formControlName="street"
+        />
+
+        <input
+          [style]="{ width: '380px'} "
+          id="complement-input"
+          type="text"
+          pInputText
+          placeholder="Complemento"
+          formControlName="complement"
+        />
+
+        <input
+          [style]="{ width: '100px' }"
+          id="number-input"
+          type="text"
+          pInputText
+          placeholder="Número"
+          [pKeyFilter]="'pint'"
+          formControlName="numberStreet"
+        />
+
+        <p-dropdown
+          [style]="{ width: '200px', height: '100%'}"
+          placeholder="Residência"
+          [options]="formList[3]"
+          optionLabel="label"
+          formControlName="residenceType"
+        ></p-dropdown>
       </div>
 
       <div class="row-children">
@@ -36,236 +310,50 @@
           placeholder="Meses"
           formControlName="month"
         ></p-inputMask>
-      </div>
+      </div> 
 
-      <div class="row" formGroupName="person">
-        <p-inputMask
-          [style]="{ width: '110px' }"
-          mask="99.999.999"
-          placeholder="RG"
-          formControlName="rg"
-        ></p-inputMask>
-
-        <p-inputMask
-          [style]="{ width: '140px' }"
-          mask="999.999.999-99"
-          placeholder="CPF"
-          formControlName="cpf"
-        ></p-inputMask>
-
-        <p-dropdown
-          [style]="{ width: '150px' }"
-          placeholder="Sexo"
-          [options]="formList[6]"
-          optionLabel="label"
-          formControlName="sex"
-        ></p-dropdown>
-
-        <input
-          [style]="{ width: '100px' }"
-          id="cod-input"
-          type="text"
-          pInputText
-          placeholder="Cód"
-          [pKeyFilter]="'pint'"
-          formControlName="cod"
-        />
-      </div>
-
-      <div class="row" formGroupName="address">
-        <p-inputMask
-          [style]="{ width: '120px' }"
-          mask="99999-999"
-          placeholder="CEP"
-          formControlName="cep"
-        ></p-inputMask>
-
-        <input
-          [style]="{ width: '90px' }"
-          id="state"
-          type="text"
-          pInputText
-          placeholder="Estado"
-          formControlName="state"
-        />
-
-        <input
-          [style]="{ width: '300px' }"
-          id="city-input"
-          type="text"
-          pInputText
-          placeholder="Cidade"
-          formControlName="city"
-        />
-      </div>
+      <h3>Família e dependentes</h3>
 
       <div class="row">
-        <input
-          id="work-input"
-          type="text"
-          pInputText
-          placeholder="Profissão"
-          formControlName="work"
-        />
-
-        <p-dropdown
-          [style]="{ width: '333px' }"
-          placeholder="Religião"
-          [options]="formList[3]"
-          optionLabel="label"
-          formControlName="religion"
-        ></p-dropdown>
-      </div>
-
-      <div class="row" formGroupName="address">
-        <p-dropdown
-          [style]="{ width: '234px' }"
-          placeholder="Qual bairro reside?"
-          [options]="formList[2]"
-          optionLabel="label"
-          formControlName="bairro"
-        ></p-dropdown>
-
-        <input
-          [style]="{ width: '300px' }"
-          id="street-input"
-          type="text"
-          pInputText
-          placeholder="Rua"
-          formControlName="street"
-        />
-      </div>
-
-      <div class="row" formGroupName="person">
-        <p-dropdown
-          [style]="{ width: '300px' }"
-          placeholder="Grau de instrução"
-          [options]="formList[1]"
-          optionLabel="label"
-          formControlName="grade"
-        ></p-dropdown>
-
-        <p-calendar
-          [style]="{ width: '230px' }"
-          [showIcon]="true"
-          dateFormat="dd/mm/yy"
-          [readonlyInput]="true"
-          inputId="birthDate-input"
-          placeholder="Data de nascimento"
-          formControlName="birthDate"
-        ></p-calendar>
-      </div>
-
-      <div class="row" formGroupName="address">
-        <input
-          [style]="{ width: '100px' }"
-          id="number-input"
-          type="text"
-          pInputText
-          placeholder="Número"
-          [pKeyFilter]="'pint'"
-          formControlName="numberStreet"
-        />
-
-        <input
-          [style]="{ width: '415px' }"
-          id="complement-input"
-          type="text"
-          pInputText
-          placeholder="Complemento"
-          formControlName="complement"
-        />
-      </div>
-
-      <div class="row">
-        <div formGroupName="person">
+        <div class="row-children">
+          <span>Recebe bolsa família?</span>
           <p-dropdown
-            placeholder="Estado civil"
-            [options]="formList[0]"
+            placeholder="Não"
+            [options]="formList[6]"
             optionLabel="label"
-            formControlName="civilState"
+            formControlName="aux"
           ></p-dropdown>
         </div>
 
-        <p-dropdown
-          placeholder="Residência"
-          [options]="formList[4]"
-          optionLabel="label"
-          formControlName="residenceType"
-        ></p-dropdown>
+        <div class="row-children">
+          <span>Há outros moradores na casa além da família? </span>
+          <p-checkbox
+            [ngModelOptions]="{ standalone: true }"
+            [binary]="true"
+            (click)="changeCondition(verify, 'others')"
+            [(ngModel)]="verify"
+          ></p-checkbox>
 
-        <p-inputMask
-          mask="99 9999-9999"
-          placeholder="Tel Fixo (81) 1234-1234"
-          formControlName="fixPhone"
-        ></p-inputMask>
-      </div>
+          <span>Quantos?</span>
 
-      <div class="row-children">
-        <span>Recebe bolsa família?</span>
-        <p-dropdown
-          placeholder="Não"
-          [options]="formList[7]"
-          optionLabel="label"
-          formControlName="aux"
-        ></p-dropdown>
+          <p-inputMask
+            [style]="{ width: '50px' }"
+            [attr.disabled]
+            mask="9"
+            placeholder="1"
+            formControlName="others"
+          ></p-inputMask>
+        </div>
 
         <p-dropdown
           placeholder="Renda familiar"
-          [options]="formList[5]"
+          [options]="formList[4]"
           optionLabel="label"
           formControlName="familiarSalary"
         ></p-dropdown>
       </div>
 
-      <div class="row">
-        <input
-          [style]="{ width: '300px' }"
-          id="email-input"
-          type="text"
-          pInputText
-          placeholder="Email"
-          [pKeyFilter]="'email'"
-          formControlName="email"
-        />
-
-        <p-calendar
-          [style]="{ width: '220px' }"
-          [showIcon]="true"
-          dateFormat="dd/mm/yy"
-          [readonlyInput]="true"
-          inputId="startDate-input"
-          placeholder="Data de admissão"
-          formControlName="startDate"
-        ></p-calendar>
-      </div>
-
-      <div class="row-children">
-        <span>Há outros moradores na casa além da família? </span>
-        <p-checkbox
-          [ngModelOptions]="{ standalone: true }"
-          [binary]="true"
-          (click)="changeCondition(verify, 'others')"
-          [(ngModel)]="verify"
-        ></p-checkbox>
-
-        <span>Quantos?</span>
-
-        <p-inputMask
-          [style]="{ width: '50px' }"
-          [attr.disabled]
-          mask="9"
-          placeholder="1"
-          formControlName="others"
-        ></p-inputMask>
-      </div>
-
-      <p-chips
-        mask="99 9 9999-9999"
-        placeholder="(81) 9 1234-1234"
-        formControlName="phone"
-      ></p-chips>
-
+      <hr>
       <div class="row-children">
         <span>Dependentes:</span>
         <button
@@ -287,93 +375,7 @@
           Remover dependente
         </button>
       </div>
-    </div>
-
-    <div
-      *ngIf="
-        form.value.person.civilState.label == 'União Estável' ||
-        form.value.person.civilState.label == 'Casado'
-      "
-      [style]="{ marginTop: '1rem' }"
-    >
-      <h3>Dados do cônjugue</h3>
-      <div class="table" formGroupName="relationship">
-        <input
-          [style]="{ width: '100%' }"
-          id="fullName-input"
-          type="text"
-          pInputText
-          placeholder="Nome completo"
-          formControlName="name"
-        />
-
-        <div class="row">
-          <p-dropdown
-            [style]="{ width: '300px' }"
-            placeholder="Grau de instrução"
-            [options]="formList[1]"
-            optionLabel="label"
-            formControlName="grade"
-          ></p-dropdown>
-
-          <p-calendar
-            [style]="{ width: '230px' }"
-            [showIcon]="true"
-            dateFormat="dd/mm/yy"
-            [readonlyInput]="true"
-            inputId="birthDate-input"
-            placeholder="Data de nascimento"
-            formControlName="birthDate"
-          ></p-calendar>
-        </div>
-
-        <div class="row">
-          <input
-            id="work-input"
-            type="text"
-            pInputText
-            placeholder="Profissão"
-            formControlName="work"
-          />
-
-          <div class="row-children">
-            <p-inputMask
-              [style]="{ width: '110px' }"
-              mask="99.999.999"
-              placeholder="RG"
-              formControlName="rg"
-            ></p-inputMask>
-
-            <p-inputMask
-              [style]="{ width: '140px' }"
-              mask="999.999.999-99"
-              placeholder="CPF"
-              formControlName="cpf"
-            ></p-inputMask>
-          </div>
-        </div>
-
-        <div class="row">
-          <input
-            [style]="{ width: '90px' }"
-            id="state"
-            type="text"
-            pInputText
-            placeholder="Estado"
-            formControlName="state"
-          />
-
-          <input
-            [style]="{ width: '300px' }"
-            id="city-input"
-            type="text"
-            pInputText
-            placeholder="Cidade"
-            formControlName="city"
-          />
-        </div>
-      </div>
-    </div>
+    </div> 
 
     <div class="table" [style]="{ marginTop: '1rem' }" formArrayName="dependents">
       <div
@@ -392,7 +394,7 @@
             formControlName="name"
           />
 
-          <div class="row" [style]="{ marginTop: '1rem' }">
+          <div class="row-children" [style]="{ marginTop: '1rem' }">
             <p-dropdown
               [style]="{ width: '300px' }"
               placeholder="Grau de instrução"
@@ -416,7 +418,11 @@
     </div>
   </form>
 
-  <button pButton class="button-submit" type="submit" (click)="onSubmit()">
-    Cadastrar
-  </button>
+  <button
+    pButton
+    class="button-submit p-button p-component"
+    type="submit"
+    (click)="onSubmit()"
+    label="Cadastrar"
+  ></button>
 </div>

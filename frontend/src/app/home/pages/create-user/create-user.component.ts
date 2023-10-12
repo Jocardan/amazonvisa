@@ -5,7 +5,7 @@ import { HomeFacade } from '../../home.facade';
 import {
   civilStateList,
   gradeList,
-  placeList,
+  stateList,
   religionList,
   residenceList,
   salaryList,
@@ -30,12 +30,12 @@ export class CreateUserComponent implements OnInit {
     this.formList = [
       civilStateList,
       gradeList,
-      placeList,
       religionList,
       residenceList,
       salaryList,
       sexList,
       yesNo,
+      stateList
     ];
 
     this.form = this.formBuilder.group({
@@ -47,7 +47,6 @@ export class CreateUserComponent implements OnInit {
         sex: [null, [Validators.required]],
         grade: [null, [Validators.required]],
         civilState: ['', [Validators.required]],
-        cod: [null],
       }),
 
       address: this.formBuilder.group({
@@ -58,6 +57,7 @@ export class CreateUserComponent implements OnInit {
         street: [null],
         numberStreet: [null],
         complement: [null],
+        residenceType: [null, [Validators.required]],
       }),
 
       relationship: this.formBuilder.group({
@@ -82,7 +82,6 @@ export class CreateUserComponent implements OnInit {
       aux: [null, [Validators.required]],
       moradores: [null, [Validators.required]],
       familiarSalary: [null, [Validators.required]],
-      residenceType: [null, [Validators.required]],
       religion: [null, [Validators.required]],
 
       others: [{ value: 0, disabled: true }, Validators.required],
