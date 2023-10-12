@@ -24,7 +24,7 @@ export class CreateUserComponent implements OnInit {
 
   formList: ListInterface[][] = [];
   autoResize: boolean = true;
-  verify: boolean = false;
+  activeResidents: boolean = false;
 
   constructor(private facade: HomeFacade, private formBuilder: FormBuilder) {
     this.formList = [
@@ -50,12 +50,12 @@ export class CreateUserComponent implements OnInit {
       }),
 
       address: this.formBuilder.group({
-        bairro: [null],
+        burgh: [null],
         cep: [null],
         state: [null],
         city: [null],
         street: [null],
-        numberStreet: [null],
+        streetNumber: [null],
         complement: [null],
         residenceType: [null, [Validators.required]],
       }),
@@ -80,13 +80,11 @@ export class CreateUserComponent implements OnInit {
       startDate: [null],
 
       aux: [null, [Validators.required]],
-      moradores: [null, [Validators.required]],
       familiarSalary: [null, [Validators.required]],
       religion: [null, [Validators.required]],
 
-      others: [{ value: 0, disabled: true }, Validators.required],
-      year: [null],
-      month: [null],
+      residents: [null],
+      livingDate: [null],
     });
   }
 
@@ -95,13 +93,6 @@ export class CreateUserComponent implements OnInit {
     return !this.form.get(field)?.valid && this.form.get(field)?.touched;
   }
 
-  changeCondition(condition: boolean, field: string) {
-    if (condition) {
-      this.form.controls[field].enable();
-    } else {
-      this.form.controls[field].disable();
-    }
-  }
 
   changeOthers(condition: boolean) {
     if (condition) {

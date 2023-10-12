@@ -253,7 +253,7 @@
           type="text"
           pInputText
           placeholder="Bairro"
-          formControlName="bairro"
+          formControlName="burgh"
         />
       </div>
 
@@ -283,7 +283,7 @@
           pInputText
           placeholder="Número"
           [pKeyFilter]="'pint'"
-          formControlName="numberStreet"
+          formControlName="streetNumber"
         />
 
         <p-dropdown
@@ -295,22 +295,15 @@
         ></p-dropdown>
       </div>
 
-      <div class="row-children">
-        <span>Há quanto tempo é morador no bairro atual?</span>
-        <p-inputMask
-          [style]="{ width: '90px' }"
-          mask="99"
-          placeholder="Anos"
-          formControlName="year"
-        ></p-inputMask>
-
-        <p-inputMask
-          [style]="{ width: '90px' }"
-          mask="99"
-          placeholder="Meses"
-          formControlName="month"
-        ></p-inputMask>
-      </div> 
+      <p-calendar
+        [style]="{ width: '230px' }"
+        [showIcon]="true"
+        dateFormat="dd/mm/yy"
+        [readonlyInput]="true"
+        inputId="livingDate-input"
+        placeholder="Mora no bairro desde"
+        formControlName="livingDate"
+      ></p-calendar>
 
       <h3>Família e dependentes</h3>
 
@@ -330,18 +323,17 @@
           <p-checkbox
             [ngModelOptions]="{ standalone: true }"
             [binary]="true"
-            (click)="changeCondition(verify, 'others')"
-            [(ngModel)]="verify"
+            [(ngModel)]="activeResidents"
           ></p-checkbox>
 
           <span>Quantos?</span>
 
           <p-inputMask
             [style]="{ width: '50px' }"
-            [attr.disabled]
-            mask="9"
+            [disabled]="!activeResidents"
+            mask="99"
             placeholder="1"
-            formControlName="others"
+            formControlName="residents"
           ></p-inputMask>
         </div>
 
