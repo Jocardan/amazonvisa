@@ -8,10 +8,11 @@ import { userInitializerProvider } from './user.initializer';
 import { UserPageComponent } from './pages/user-page/user-page.component';
 import { CommonModule } from '@angular/common';
 import { InfoPageComponent } from './pages/info-page/info-page.component';
+import { ReportPageComponent } from './pages/report-page/report-page.component';
 
 @NgModule({
   providers: [UserState, UserFacade, userInitializerProvider],
-  declarations: [LoginComponent, UserPageComponent, InfoPageComponent],
+  declarations: [LoginComponent, UserPageComponent, InfoPageComponent, ReportPageComponent],
   imports: [UserRoutingModule, SharedModule, CommonModule],
 })
 export class UserModule {}
