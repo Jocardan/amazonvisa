@@ -11,7 +11,8 @@ export class ReportPageComponent implements OnInit {
   form = this.formBuilder.group({
     report: [false],
     title: [null],
-    message: [null]
+    message: [null],
+    annonymous: [false]
   })
 
   constructor(private formBuilder: FormBuilder) { }

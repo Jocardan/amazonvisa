@@ -9,13 +9,14 @@
         formControlName="report"
         value="true"
       ></p-radioButton> 
+
       sugestão
       <p-radioButton
         name="report"
         formControlName="report"
         value="false"
-      ></p-radioButton>
-    </p>
+      ></p-radioButton> 
+   </p>
 
     <div class="flex">
       <input
@@ -35,6 +36,15 @@
         [autoResize]="true"
       ></textarea>
     </div>
+
+    <p>
+      Enviar como anônimo:
+      <p-radioButton
+        name="annonymous"
+        formControlName="annonymous"
+        value="true"
+      ></p-radioButton>
+    </p>
 
     <button
       pButton
