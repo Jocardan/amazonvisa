@@ -1,0 +1,26 @@
+<main>
+  <h2>
+    Parceiros cadastrados e benefícios
+  </h2>
+
+  <div class="grid">
+    <div *ngFor="let item of partners" class="flex">
+      <div class="image" *ngIf="item.image; else noImage">
+        {{ item.image }}
+      </div>
+      <div class="flex-d">
+        <p class="bold">{{ item.title }}</p>
+        <p>{{ item.address }} • Tel. {{ item.phone }}</p>
+        <p class="bold">{{ item.benefit }}</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<ng-template #noImage>
+  <p-skeleton
+    shape="rectangle"
+    width="10rem"
+    height="6rem"
+  ></p-skeleton>
+</ng-template>
