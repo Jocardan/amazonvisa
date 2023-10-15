@@ -1,0 +1,52 @@
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+   
+  .header {
+   margin: auto;
+    max-width: 1350px;
+
+    display: flex;
+    align-items: center;
+
+    justify-content: space-between;
+    text-align: center;
+
+    background-color: white;
+    box-shadow:  0px 3px 6px rgba(0,0,0,0.05);
+    height: 4rem;
+
+    span {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--purple-700);
+    }
+
+    p {
+      font-family: cursive, "Franklin Gothic Medium";
+      font-style: oblique;
+    }
+
+    .nav-menu {
+      margin-left: auto;
+      display: flex;
+      gap: 1rem;
+
+      :hover {
+        color: rgb(96, 96, 255)
+      }
+
+      button {
+        border: none;
+        background: none;
+        font-weight: 600;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: all 0.3s linear 0s;
+
+      }
+    }
+  }
+}

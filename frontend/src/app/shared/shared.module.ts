@@ -11,10 +11,11 @@ import { PrimengModule } from './modules/primeng.module';
 // Components
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ShowRoutesComponent } from './components/show-routes/show-routes.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   providers: [UserService],
-  declarations: [NotFoundComponent, ShowRoutesComponent],
+  declarations: [NotFoundComponent, ShowRoutesComponent, HeaderComponent],
   imports: [
     RouterModule,
     PrimengModule,
@@ -24,6 +25,7 @@ import { ShowRoutesComponent } from './components/show-routes/show-routes.compon
     FormsModule,
     ReactiveFormsModule,
     ShowRoutesComponent,
+    HeaderComponent
   ],
 })
 export class SharedModule {}
