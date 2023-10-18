@@ -30,7 +30,14 @@ p-panel {
 
         span {
           display: flex;
+          flex-direction: column;
           gap: 0.5rem;
+
+          p {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
         }
       }
     }

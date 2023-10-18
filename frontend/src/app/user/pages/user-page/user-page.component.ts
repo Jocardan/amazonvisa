@@ -13,12 +13,7 @@ export class UserPageComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  display: boolean = false;
   userData: {}[] = [];
   name: string = 'José Daniel';
-  situation: string = 'Adimplente';
-
-  showDisplay() {
-    this.display = true;
-  }
+  situation: string = 'Ativo';
 }

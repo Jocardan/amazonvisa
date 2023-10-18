@@ -65,16 +65,34 @@ const yesNo: ListInterface[] = [
   { label: 'Não', value: false },
 ];
 
-const placeList: ListInterface[] = [
-  { label: 'Alto José Leal', value: 'Alto José Leal' },
-  { label: 'Bela vista 2', value: 'Bela vista 2' },
-  { label: 'Lot. José de Lemos', value: 'Lot. José de Lemos' },
-  { label: 'Lot. Palácio Boa Vista', value: 'Lot. Palácio Boa Vista' },
-  { label: 'Lot. de Baú', value: 'Lot. de Baú' },
-  { label: 'Lot. Vida Nova', value: 'Lot. Vida Nova' },
-  { label: 'Vitória Coqueiros', value: 'Vitória Coqueiros' },
-  { label: 'Vale Verde', value: 'Vale Verde' },
-  { label: 'Outro', value: 'Outro' },
+const stateList: ListInterface[] = [
+  { value: 'AC', label: 'Acre' },
+  { value: 'AL', label: 'Alagoas' },
+  { value: 'AP', label: 'Amapá' },
+  { value: 'AM', label: 'Amazonas' },
+  { value: 'BA', label: 'Bahia' },
+  { value: 'CE', label: 'Ceará' },
+  { value: 'DF', label: 'Distrito Federal' },
+  { value: 'ES', label: 'Espírito Santo' },
+  { value: 'GO', label: 'Goías' },
+  { value: 'MA', label: 'Maranhão' },
+  { value: 'MT', label: 'Mato Grosso' },
+  { value: 'MS', label: 'Mato Grosso do Sul' },
+  { value: 'MG', label: 'Minas Gerais' },
+  { value: 'PA', label: 'Pará' },
+  { value: 'PB', label: 'Paraíba' },
+  { value: 'PR', label: 'Paraná' },
+  { value: 'PE', label: 'Pernambuco' },
+  { value: 'PI', label: 'Piauí' },
+  { value: 'RJ', label: 'Rio de Janeiro' },
+  { value: 'RN', label: 'Rio Grande do Norte' },
+  { value: 'RS', label: 'Rio Grande do Sul' },
+  { value: 'RO', label: 'Rondônia' },
+  { value: 'RR', label: 'Roraíma' },
+  { value: 'SC', label: 'Santa Catarina' },
+  { value: 'SP', label: 'São Paulo' },
+  { value: 'SE', label: 'Sergipe' },
+  { value: 'TO', label: 'Tocantins' },
 ];
 
 const salaryList: ListInterface[] = [
@@ -122,6 +140,6 @@ export {
   residenceList,
   religionList,
   sexList,
-  placeList,
+  stateList,
   salaryList,
 };
