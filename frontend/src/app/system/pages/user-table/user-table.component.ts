@@ -2,7 +2,6 @@ import { UserService } from 'src/app/shared/services/user.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Table } from 'primeng/table';
 import { PrimeNGConfig } from 'primeng/api';
-import { ShowRoutesComponent } from 'src/app/shared/components/show-routes/show-routes.component';
 
 @Component({
   selector: 'app-user-table',
@@ -22,7 +21,6 @@ export class UserTableComponent implements OnInit {
   userSelectedPayment: string = '';
 
   language: any;
-  @ViewChild('modalChild') modalChild: ShowRoutesComponent | undefined;
 
   constructor(private userService: UserService, private config: PrimeNGConfig) {
     this.users = userService.getUsers();
@@ -56,9 +54,5 @@ export class UserTableComponent implements OnInit {
     this.userSelectedName = user.name;
     this.userSelectedPayment = user.payment;
     this.display = true;
-  }
-
-  changeModalVisibility() {
-    this.modalChild?.switchVisibility();
   }
 }

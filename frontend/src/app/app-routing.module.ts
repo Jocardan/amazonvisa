@@ -4,8 +4,12 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
 
 const routes: Routes = [
   { 
-    path: 'portal',
+    path: '',
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+  },
+  {
+    path: 'system',
+    loadChildren: () => import('./system/system.module').then(m => m.SystemModule)
   },
   {
     path: 'user',

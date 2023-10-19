@@ -3,13 +3,6 @@
     <h1>Painel Amazonvisa</h1>
 
     <h2>Caixa {{ moneyBox | currency: "BRL" }}</h2>
-
-    <button
-      (click)="changeModalVisibility()"
-      pButton
-      label="Mudar de página"
-      class="p-button p-component align-self-center"
-    ></button>
   </header>
 
   <main role="main">
@@ -104,5 +97,3 @@
     ></p-button>
   </div>
 </p-dialog>
-
-<app-show-routes #modalChild></app-show-routes>

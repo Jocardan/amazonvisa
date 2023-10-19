@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { LoginComponent } from './pages/login/login.component';
 import { UserRoutingModule } from './user-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { UserState } from './state/user.state';
@@ -13,7 +12,7 @@ import { BenefitsPageComponent } from './pages/benefits-page/benefits-page.compo
 
 @NgModule({
   providers: [UserState, UserFacade, userInitializerProvider],
-  declarations: [LoginComponent, UserPageComponent, InfoPageComponent, ReportPageComponent, BenefitsPageComponent],
+  declarations: [UserPageComponent, InfoPageComponent, ReportPageComponent, BenefitsPageComponent],
   imports: [UserRoutingModule, SharedModule, CommonModule],
 })
 export class UserModule {}

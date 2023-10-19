@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HomeFacade } from '../../home.facade';
 
 import {
   civilStateList,
@@ -13,6 +12,7 @@ import {
   yesNo,
   ListInterface,
 } from '../../types/form';
+import { SystemFacade } from '../../system.facade';
 
 @Component({
   selector: 'app-create-user',
@@ -26,7 +26,7 @@ export class CreateUserComponent implements OnInit {
   autoResize: boolean = true;
   activeResidents: boolean = false;
 
-  constructor(private facade: HomeFacade, private formBuilder: FormBuilder) {
+  constructor(private facade: SystemFacade, private formBuilder: FormBuilder) {
     this.formList = [
       civilStateList,
       gradeList,
