@@ -67,6 +67,15 @@ main {
   display: block;
 }
 
+main {
+  font-family: var(--font-family);
+  max-width: 1200px;
+  margin: 2rem auto; 
+  padding: 2rem;
+
+  font-size: 1.2rem;
+}
+
 body {
   line-height: 1;
 }
