@@ -1,33 +1,33 @@
 <app-header></app-header>
 <div user-page>
   <main>
-    <h1>Bem-vindo, {{ name }}!</h1>
+    <h2>Bem-vindo, {{ name }}!</h2>
 
     <div class="flex gap-3">
-      <h2>Situação:</h2>
-      <h2
+      <h3>Situação:</h3>
+      <h3
         class="redColor"
         [ngClass]="{ greenColor: situation === 'Ativo' }"
       >
         {{ situation }}
-      </h2>
+      </h3>
     </div>
 
-    <h1>Histórico</h1>
+    <h2>Histórico</h2>
     <p-table
       #dt
       [value]="userData"
-      responsiveLayout="scroll"
-      dataKey="id"
       [rows]="10"
+      responsiveLayout="scroll"
+      [paginator]="true"
+      dataKey="id"
       [showCurrentPageReport]="true"
       [rowsPerPageOptions]="[10, 25, 50]"
-      styleClass="p-datatable-gridlines"
-      [paginator]="true"
-      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      styleClass="p-datatable-striped"
+      currentPageReportTemplate="Exibindo {first} até {last} de {totalRecords}"
     >
       <ng-template pTemplate="header">
-        <tr>
+        <tr [style]="{ fontWeight: 'bold' }">
           <th>Vencimento</th>
           <th>Pagamento</th>
           <th>Status</th>

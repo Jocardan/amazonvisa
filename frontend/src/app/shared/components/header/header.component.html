@@ -6,19 +6,19 @@
     </div>
 
     <div class="nav-menu" *ngIf="url === 'user'">
-      <p-button type="submit" title="situação">
+      <p-button [link]="true" [routerLink]="'/user'" type="submit" title="situação">
         Situação
       </p-button>
 
-      <p-button type="submit" title="perfil">
+      <p-button [link]="true" [routerLink]="'/user/info'" type="submit" title="perfil">
         Perfil
       </p-button>
 
-      <p-button type="submit" title="parceiros">
+      <p-button [link]="true" [routerLink]="'/user/benefits'" type="submit" title="parceiros">
         Parceiros
       </p-button>
 
-      <p-button type="submit" title="sugestão e denúncia">
+      <p-button [link]="true" [routerLink]="'/user/report'" type="submit" title="sugestão e denúncia">
         Sugestão e Denúncias
       </p-button>
 
@@ -32,7 +32,7 @@
     </div>
 
     <div class="nav-menu" *ngIf="url === 'partner'">
-      <p-button type="submit" title="perfil">
+      <p-button [link]="true" [routerLink]="'/partner'" type="submit" title="perfil">
         Perfil e Busca
       </p-button>
 

@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.url = this.router.url.replace('/', '')
+    this.url = this.router.url.split('/')[1]
   }
 
 }
