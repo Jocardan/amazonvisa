@@ -29,4 +29,6 @@ export interface Associate {
 
   residents: number;
   livingDate: string;
+
+  status?: string;
 }

@@ -1,0 +1,117 @@
+<app-header></app-header>
+<main>
+  <h2>Informações do associado</h2>
+
+  <div class="grid">
+    <div>
+      <h3>Dados do parceiro</h3>
+      <section>
+        <p>
+          Nome Fantasia:
+          <span> {{ partner.title }}</span>
+        </p>
+        <p>
+          CNPJ: <span>{{ partner.cnpj }}</span> 
+        </p>
+        <p>
+          Área de Atuação: <span>{{ partner.area }}</span>
+        </p>
+        <p>
+          Descrição da empresa:<span> {{ partner.description }}</span>
+        </p>
+        <p>
+          Representante legal da empresa: <span>{{ partner.owner}}</span>
+        </p>
+        <p>
+          Email:<span> {{ partner.email}}</span>
+        </p>
+        <p>
+          Telefone:<span>{{ partner.phone }}</span>
+        </p>
+        Cadastrado em: {{ partner.startDate}}
+      </section>
+    </div>
+  
+    <div>
+      <h3>Endereço do associado</h3>
+      <section>
+        <p>
+          Cep:<span> {{ partner.cep }}</span>
+        </p>
+        <p>
+          Cidade e Estado: 
+          <span>{{ partner.city }}, {{ partner.state }}</span>
+        </p>
+        <p>
+          Bairro:
+          <span>{{ partner.burgh }}</span>
+        </p>
+        <p>
+          Rua: <span>{{ partner.street }}, N {{ partner.streetNumber }}</span>
+        </p>
+        <p>
+          Complemento:
+          <span>{{ partner.complement }}</span>, 
+        </p>
+      </section>
+    </div>  
+  </div>
+
+  <div>
+    <h3>Buscar associado</h3>
+    <section class="flex gap-2">
+      <p-inputMask
+        [style]="{ width: '250px' }"
+        mask="999.999.999.99"
+        [ngModel]="userId"
+        placeholder="Número de identificação"
+      ></p-inputMask>
+
+      <button pButton type="button" (click)="searchAssociate()">Buscar</button>
+    </section>
+
+    <section class="associate-section" *ngIf="associate">
+      <div class="flex flex-column gap-2">
+        <label htmlFor="username">Nome do associado</label>
+        <input
+          pInputText
+          id="username"
+          aria-describedby="username-help"
+          disabled
+          [value]="associate.name"
+        />
+      </div>
+      <div class="flex flex-column gap-2">
+        <label htmlFor="cpf">CPF do associado</label>
+        <input
+          pInputText
+          id="cpf"
+          aria-describedby="cpf-help"
+          disabled
+          [value]="associate.cpf"
+        />
+      </div>
+      <div class="flex flex-column gap-2">
+        <label htmlFor="phone">Telefone do associado</label>
+        <input
+          pInputText
+          id="phone"
+          aria-describedby="phone-help"
+          disabled
+          [value]="associate.phone"
+        />
+      </div>
+      <div class="flex flex-column gap-2">
+        <label htmlFor="status">Status</label>
+        <input
+          pInputText
+          id="status"
+          aria-describedby="status-help"
+          disabled
+          [value]="associate.status"
+          [style]="associate.status === 'Ativo' ? { color: 'green'} : { color: 'red' }"
+        />
+      </div>
+    </section>
+  </div>
+</main>

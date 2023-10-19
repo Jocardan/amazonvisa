@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 import { PartnerFacade } from './partner.facade';
 import { partnerState } from './state/partner.state';
 import { partnerInitializerProvider } from './partner.initializer';
-import { SharedModule } from 'primeng/api';
 import { PartnerRoutingModule } from './partner-routing.module';
-
-
+import { InfoPageComponent } from './pages/info-page/info-page.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   providers: [
@@ -14,11 +13,13 @@ import { PartnerRoutingModule } from './partner-routing.module';
     PartnerFacade,
     partnerInitializerProvider
   ],
-  declarations: [],
+  declarations: [
+    InfoPageComponent
+  ],
   imports: [
-    CommonModule,
+    PartnerRoutingModule,
     SharedModule,
-    PartnerRoutingModule
+    CommonModule,
   ]
 })
 export class PartnerModule { }
