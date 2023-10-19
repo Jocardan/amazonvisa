@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { stateList } from '../../types/form'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-partner',
@@ -18,7 +20,32 @@ export class CreatePartnerComponent implements OnInit {
   partnerDescription: any;
   autoResize: boolean = true;
 
-  constructor() {}
+  states = stateList
+
+  form: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) {
+    this.form = this.formBuilder.group({
+      tittle: [null, [Validators.required, Validators.minLength(5)]],
+      cpf: [null, [Validators.required]],
+      cnpj: [null, [Validators.required]],
+
+      address: this.formBuilder.group({
+        burgh: [null],
+        cep: [null],
+        state: [null],
+        city: [null],
+        street: [null],
+        streetNumber: [null],
+        complement: [null],
+      }),
+
+      phone: [null],
+      startDate: [null],
+
+      description: [null]
+    });
+  }
 
   ngOnInit(): void {}
 }

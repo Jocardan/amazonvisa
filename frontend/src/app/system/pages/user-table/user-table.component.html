@@ -1,11 +1,12 @@
+<app-header></app-header>
 <main>
-  <header>
-    <h1>Painel Amazonvisa</h1>
+  <div class="header">
+    <h2>Painel Amazonvisa</h2>
 
-    <h2>Caixa {{ moneyBox | currency: "BRL" }}</h2>
-  </header>
+    <h3>Caixa {{ moneyBox | currency: "BRL" }}</h3>
+  </div>
 
-  <main role="main">
+  <div class=".main" role="main">
     <p-table
       #dt
       [value]="users"
@@ -14,16 +15,13 @@
       [rows]="10"
       [showCurrentPageReport]="true"
       [rowsPerPageOptions]="[10, 25, 50]"
-      styleClass="p-datatable-customers p-datatable-gridlines"
       [paginator]="true"
-      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      currentPageReportTemplate="Exibindo {first} de {last} dos {totalRecords}"
       [globalFilterFields]="['status', 'name', 'payment']"
     >
       <ng-template pTemplate="caption">
         <div class="flex">
           <span class="p-input-icon-left ml-auto">
-            <i class="pi pi-search"></i>
-
             <input
               pInputText
               type="text"
@@ -35,11 +33,11 @@
       </ng-template>
 
       <ng-template pTemplate="header">
-        <tr>
+        <tr [style]="{ fontWeight: 'bold' }">
           <th>Nome</th>
           <th>Situação</th>
           <th>Pagamento</th>
-          <th style="width: 4rem">Editar</th>
+          <th style="width: 4rem">Entrar</th>
         </tr>
       </ng-template>
 
@@ -50,50 +48,16 @@
           <td>{{ user.payment }}</td>
           <td>
             <button
+              [routerLink]="'/system/info'"
               type="button"
               pButton
-              icon="pi pi-user-edit"
+              icon="pi pi-caret-right"
               pRipple
-              (click)="selectUser(user)"
             ></button>
           </td>
         </tr>
       </ng-template>
     </p-table>
-  </main>
+  </div>
 </main>
 
-<p-dialog
-  header="Editar informações"
-  [(visible)]="display"
-  [style]="{
-    width: '500px'
-  }"
->
-  <h3>Nome do afiliado: {{ userSelectedName }}</h3>
-  <p>Data do ultimo pagamento: {{ date | date: "fullDate":"":"pt-BR" }}</p>
-  <p>Data de vencimento: {{ userSelectedPayment }}</p>
-  <p-divider align="left" type="dashed">Registrar pagamento</p-divider>
-  <div>
-    <p-calendar
-      [style]="{
-        position: 'fixed',
-        overflow: 'visible'
-      }"
-      [showIcon]="true"
-      dateFormat="dd/mm/yy"
-      [(ngModel)]="date"
-      [minDate]="minDate"
-      [readonlyInput]="true"
-      inputId="check-payment"
-    ></p-calendar>
-    <p-button
-      label="Registrar"
-      icon="pi pi-check"
-      iconPos="left"
-      [style]="{
-        float: 'right'
-      }"
-    ></p-button>
-  </div>
-</p-dialog>

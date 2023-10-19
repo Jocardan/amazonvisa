@@ -9,6 +9,7 @@ import { SystemFacade } from './system.facade';
 import { SystemState } from './state/system.state';
 import { SharedModule } from '../shared/shared.module';
 import { SystemRoutingModule } from './system-routing.module';
+import { InfoPageComponent } from './pages/info-page/info-page.component';
 
 @NgModule({
   providers: [
@@ -20,7 +21,8 @@ import { SystemRoutingModule } from './system-routing.module';
   declarations: [
     UserTableComponent,
     CreateUserComponent,
-    CreatePartnerComponent
+    CreatePartnerComponent,
+    InfoPageComponent
   ],
   imports: [
     CommonModule,

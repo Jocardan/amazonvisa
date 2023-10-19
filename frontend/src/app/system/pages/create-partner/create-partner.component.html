@@ -1,55 +1,122 @@
+<app-header></app-header>
 <main>
-  <h1>Cadastrar parceiro</h1>
-  <div class="form">
+  <h2>Cadastrar parceiro</h2>
+  <form [formGroup]="form">
     <input
       id="fullName-input"
       type="text"
       pInputText
-      placeholder="Nome do estabelecimento"
-      [(ngModel)]="partnerName"
+      placeholder="Nome fantasia"
+      formControlName="title"
     />
 
     <div class="row">
       <p-inputMask
         mask="99.999.999"
-        [(ngModel)]="partnerCNPJ"
+        formControlName="cnpj"
         placeholder="CNPJ"
       ></p-inputMask>
 
       <p-inputMask
         [style]="{ width: '250px' }"
         mask="999.999.999-99"
-        [(ngModel)]="partnerCPF"
+        formControlName="cpf"
         placeholder="CPF do responsável"
       ></p-inputMask>
-    </div>
 
-    <div class="row">
       <p-inputMask
         mask="(99) 9 9999-9999"
-        [(ngModel)]="partnerContact"
+        formControlName="phone"
         placeholder=" N° (81) 9 1234-1234"
       ></p-inputMask>
 
-      <input
-        id="address-input"
-        type="text"
-        pInputText
-        placeholder="Endereço"
-        [(ngModel)]="partnerAddress"
-      />
+      <p-calendar
+        [style]="{ width: '220px' }"
+        [showIcon]="true"
+        dateFormat="dd/mm/yy"
+        [readonlyInput]="true"
+        inputId="startDate-input"
+        placeholder="Data de admissão"
+        formControlName="startDate"
+      ></p-calendar>
     </div>
-  </div>
 
-  <textarea
-    [style]="{ marginTop: '1em' }"
-    [rows]="1"
-    [cols]="22"
-    placeholder="Descrição"
-    [autoResize]="autoResize"
-    [(ngModel)]="partnerDescription"
-    pInputTextarea
-  ></textarea>
+    <h3>Endereço</h3>
+      <div class="row" formGroupName="address">
+        <p-inputMask
+          [style]="{ width: '110px' }"
+          mask="99999-999"
+          placeholder="CEP"
+          formControlName="cep"
+        ></p-inputMask>
+
+        <p-dropdown
+          [style]="{ width: '250px', height: '100%', alignItems: 'center' }"
+          placeholder="Estado"
+          [options]="states"
+          optionLabel="label"
+          formControlName="state"
+        ></p-dropdown>
+
+        <input
+          [style]="{ width: '330px'} "
+          id="city-input"
+          type="text"
+          pInputText
+          placeholder="Cidade"
+          formControlName="city"
+        />
+
+        <input
+          [style]="{ width: '330px'} "
+          id="burgh"
+          type="text"
+          pInputText
+          placeholder="Bairro"
+          formControlName="burgh"
+        />
+      </div>
+
+      <div class="row" formGroupName="address">
+        <input
+          [style]="{ width: '380px'} "
+          id="street-input"
+          type="text"
+          pInputText
+          placeholder="Rua"
+          formControlName="street"
+        />
+
+        <input
+          [style]="{ width: '380px'} "
+          id="complement-input"
+          type="text"
+          pInputText
+          placeholder="Complemento"
+          formControlName="complement"
+        />
+
+        <input
+          [style]="{ width: '100px' }"
+          id="number-input"
+          type="text"
+          pInputText
+          placeholder="Número"
+          [pKeyFilter]="'pint'"
+          formControlName="streetNumber"
+        />
+      </div>
+      
+      <textarea
+        [style]="{ marginTop: '1em', marginBottom: '1rem' }"
+        [rows]="1"
+        [cols]="22"
+        placeholder="Descrição"
+        [autoResize]="autoResize"
+        formControlName='description'
+        pInputTextarea
+      ></textarea>
+  </form>
 
   <button pButton type="button">Cadastrar</button>
 </main>

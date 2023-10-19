@@ -1,0 +1,23 @@
+main {
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+
+    section {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      span {
+        color: #6c757d;
+      }
+
+      .dependents {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+      }
+    }
+  } 
+}

@@ -36,13 +36,36 @@
         Perfil e Busca
       </p-button>
 
-      <p-button
+      <button
+        pButton
+        aria-label="Botão usuário"
+        pRipple
+        type="button"
+        class="p-button-lg p-button-outlined p-button-rounded"
+        icon="pi pi-user"
+      ></button>
+    </div>
+
+    <div class="nav-menu" *ngIf="url === 'system'">
+      <p-button [link]="true" [routerLink]="'/system'" type="submit" title="situação">
+        Usuários
+      </p-button>
+
+      <p-button [link]="true" [routerLink]="'/system/create-user'" type="submit" title="perfil">
+        Criar associado
+      </p-button>
+
+      <p-button [link]="true" [routerLink]="'/system/create-partner'" type="submit" title="parceiros">
+        Criar parceiro
+      </p-button>
+
+      <button
         pButton
         pRipple
         type="button"
         class="p-button-lg p-button-outlined p-button-rounded"
         icon="pi pi-user"
-      ></p-button>
+      ></button>
     </div>
   </div>
 </header>
