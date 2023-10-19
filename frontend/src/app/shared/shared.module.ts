@@ -12,6 +12,7 @@ import { PrimengModule } from './modules/primeng.module';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ShowRoutesComponent } from './components/show-routes/show-routes.component';
 import { HeaderComponent } from './components/header/header.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   providers: [UserService],
@@ -19,6 +20,7 @@ import { HeaderComponent } from './components/header/header.component';
   imports: [
     RouterModule,
     PrimengModule,
+    CommonModule
   ],
   exports: [
     PrimengModule,

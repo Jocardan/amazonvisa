@@ -5,22 +5,22 @@
       <span>Amazonvisa</span>
     </div>
 
-    <div class="nav-menu">
-      <button type="button" title="situação">
+    <div class="nav-menu" *ngIf="url === 'user'">
+      <p-button type="submit" title="situação">
         Situação
-      </button>
+      </p-button>
 
-      <button type="button" title="perfil">
+      <p-button type="submit" title="perfil">
         Perfil
-      </button>
+      </p-button>
 
-      <button type="button" title="parceiros">
+      <p-button type="submit" title="parceiros">
         Parceiros
-      </button>
+      </p-button>
 
-      <button type="button" title="sugestão e denúncia">
+      <p-button type="submit" title="sugestão e denúncia">
         Sugestão e Denúncias
-      </button>
+      </p-button>
 
       <button
         pButton
@@ -29,6 +29,20 @@
         class="p-button-lg p-button-outlined p-button-rounded"
         icon="pi pi-user"
       ></button>
+    </div>
+
+    <div class="nav-menu" *ngIf="url === 'partner'">
+      <p-button type="submit" title="perfil">
+        Perfil e Busca
+      </p-button>
+
+      <p-button
+        pButton
+        pRipple
+        type="button"
+        class="p-button-lg p-button-outlined p-button-rounded"
+        icon="pi pi-user"
+      ></p-button>
     </div>
   </div>
 </header>
