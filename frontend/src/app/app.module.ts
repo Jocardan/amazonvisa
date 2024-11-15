@@ -13,10 +13,19 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 
 registerLocaleData(ptBr);
 
-@NgModule({ declarations: [AppComponent],
-    bootstrap: [AppComponent], imports: [AppRoutingModule,
-        SharedModule,
-        BrowserModule,
-        CommonModule,
-        BrowserAnimationsModule], providers: [{ provide: LOCALE_ID, useValue: 'pt' }, provideHttpClient(withInterceptorsFromDi())] })
-export class AppModule {}
+@NgModule({
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
+  imports: [
+    AppRoutingModule,
+    SharedModule,
+    BrowserModule,
+    CommonModule,
+    BrowserAnimationsModule
+  ],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'pt' },
+    provideHttpClient(withInterceptorsFromDi())
+  ]
+})
+export class AppModule { }
