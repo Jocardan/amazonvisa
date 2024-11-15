@@ -1,10 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Services
 import { UserService } from './services/user.service';
@@ -15,24 +10,26 @@ import { PrimengModule } from './modules/primeng.module';
 // Components
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ShowRoutesComponent } from './components/show-routes/show-routes.component';
+import { HeaderComponent } from './components/header/header.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   providers: [UserService],
-  declarations: [NotFoundComponent, ShowRoutesComponent],
+  declarations: [NotFoundComponent, ShowRoutesComponent, HeaderComponent],
   imports: [
     RouterModule,
-    BrowserModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    PrimengModule,
-  ],
-  exports: [
-    CommonModule,
-    BrowserModule,
     PrimengModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
+  ],
+  exports: [
+    HeaderComponent,
+    RouterModule,
     ShowRoutesComponent,
+    PrimengModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
 })
 export class SharedModule {}

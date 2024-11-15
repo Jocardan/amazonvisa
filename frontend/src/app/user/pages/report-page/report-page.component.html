@@ -1,0 +1,58 @@
+<app-header></app-header>
+<main>
+  <h2>Sugestão e denúncias</h2>
+
+  <form class="flex" action="" [formGroup]="form">
+    <p>
+      Denúncia
+      <p-radioButton
+        name="report"
+        formControlName="report"
+        value="true"
+      ></p-radioButton> 
+
+      sugestão
+      <p-radioButton
+        name="report"
+        formControlName="report"
+        value="false"
+      ></p-radioButton> 
+   </p>
+
+    <div class="flex">
+      <input
+        id="title-input"
+        type="text"
+        pInputText
+        placeholder="Título"
+        formControlName="title"
+      />
+      <label for="float-input">Mensagem</label>
+      <textarea
+        id="float-input"
+        rows="5"
+        cols="30"
+        pInputTextarea
+        formControlName="message"
+        [autoResize]="true"
+      ></textarea>
+    </div>
+
+    <p>
+      Enviar como anônimo:
+      <p-radioButton
+        name="annonymous"
+        formControlName="annonymous"
+        value="true"
+      ></p-radioButton>
+    </p>
+
+    <button
+      pButton
+      class="button-submit p-button p-component"
+      type="submit"
+      label="Enviar"
+    ></button>
+  </form>
+</main>
+

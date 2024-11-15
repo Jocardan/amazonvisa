@@ -5,7 +5,7 @@ import { HomeFacade } from '../../home.facade';
 import {
   civilStateList,
   gradeList,
-  placeList,
+  stateList,
   religionList,
   residenceList,
   salaryList,
@@ -24,18 +24,18 @@ export class CreateUserComponent implements OnInit {
 
   formList: ListInterface[][] = [];
   autoResize: boolean = true;
-  verify: boolean = false;
+  activeResidents: boolean = false;
 
   constructor(private facade: HomeFacade, private formBuilder: FormBuilder) {
     this.formList = [
       civilStateList,
       gradeList,
-      placeList,
       religionList,
       residenceList,
       salaryList,
       sexList,
       yesNo,
+      stateList
     ];
 
     this.form = this.formBuilder.group({
@@ -47,17 +47,17 @@ export class CreateUserComponent implements OnInit {
         sex: [null, [Validators.required]],
         grade: [null, [Validators.required]],
         civilState: ['', [Validators.required]],
-        cod: [null],
       }),
 
       address: this.formBuilder.group({
-        bairro: [null],
+        burgh: [null],
         cep: [null],
         state: [null],
         city: [null],
         street: [null],
-        numberStreet: [null],
+        streetNumber: [null],
         complement: [null],
+        residenceType: [null, [Validators.required]],
       }),
 
       relationship: this.formBuilder.group({
@@ -71,7 +71,7 @@ export class CreateUserComponent implements OnInit {
         city: [null],
       }),
 
-      children: this.formBuilder.array([]),
+      dependents: this.formBuilder.array([]),
 
       phone: [null],
       fixPhone: [null],
@@ -80,14 +80,11 @@ export class CreateUserComponent implements OnInit {
       startDate: [null],
 
       aux: [null, [Validators.required]],
-      moradores: [null, [Validators.required]],
       familiarSalary: [null, [Validators.required]],
-      residenceType: [null, [Validators.required]],
       religion: [null, [Validators.required]],
 
-      others: [{ value: 0, disabled: true }, Validators.required],
-      year: [null],
-      month: [null],
+      residents: [null],
+      livingDate: [null],
     });
   }
 
@@ -96,17 +93,10 @@ export class CreateUserComponent implements OnInit {
     return !this.form.get(field)?.valid && this.form.get(field)?.touched;
   }
 
-  changeCondition(condition: boolean, field: string) {
-    if (condition) {
-      this.form.controls[field].enable();
-    } else {
-      this.form.controls[field].disable();
-    }
-  }
 
-  changeChildren(condition: boolean) {
+  changeOthers(condition: boolean) {
     if (condition) {
-      (<FormArray>this.form.controls['children']).push(
+      (<FormArray>this.form.controls['dependents']).push(
         this.formBuilder.group({
           name: [null],
           grade: [null],
@@ -114,7 +104,7 @@ export class CreateUserComponent implements OnInit {
         })
       );
     } else {
-      (<FormArray>this.form.controls['children']).removeAt(-1);
+      (<FormArray>this.form.controls['dependents']).removeAt(-1);
     }
   }
 
@@ -133,7 +123,7 @@ export class CreateUserComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.controls['children'].value);
+    console.log(this.form.controls['dependents'].value);
   }
 
   ngOnInit(): void {}

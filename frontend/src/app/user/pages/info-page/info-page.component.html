@@ -1,0 +1,122 @@
+<app-header></app-header>
+<main>
+  <h2>Informações do associado</h2>
+
+  <div class="grid">
+    <div>
+      <h3>Dados pessoais</h3>
+      <section>
+        <p>
+          Nome completo:
+          <span> {{ user.name }}</span>
+        </p>
+        <p>
+          Data de nascimento:
+          <span> {{ user.birthDate }}</span>
+        </p>
+        <p>
+          RG: <span>{{ user.rg }}</span> 
+          CPF: <span>{{ user.cpf }}</span> 
+        </p>
+        <p>
+          Sexo: <span>{{ user.sex }}</span>
+        </p>
+        <p>
+          Estado Civíl: <span>{{ user.civilState }}</span>
+        </p> 
+        <p>
+          Grau de instrução:<span> {{ user.grade }}</span>
+        </p>
+        <p>
+          Profissão:<span> {{ user.work}}</span>
+        </p>
+        <p>
+          Religião: <span>{{ user.religion}}</span>
+        </p>
+        <p>
+          Email:<span> {{ user.email}}</span>
+        </p>
+        <p>
+          Telefones:<span> {{ user.fixPhone}} - {{ user.phone }}</span>
+        </p>
+        Cadastrado em: {{ user.startDate}}
+      </section>
+    </div>
+  
+    <div>
+      <h3 *ngIf="user.relationship">Dados do cônjugue</h3>
+      <section *ngIf="user.relationship">
+        <p>
+          Nome completo: <span>{{ user.relationship.name }}</span>
+        </p>
+        <p>
+          Data de nascimento: <span>{{ user.relationship.birthDate }}</span>
+        </p>
+        <p>
+          RG: <span>{{ user.relationship.rg }}</span>
+        </p>
+        <p>
+          CPF: <span>{{ user.relationship.cpf }}</span>
+        </p>
+        <p>
+          Grau de instrução:
+          <span> {{ user.relationship.grade}}</span> 
+        </p>
+        <p>
+          Profissão:
+          <span> {{ user.relationship.work }}</span> 
+        </p>
+        <p>
+          Endereço: 
+          <span>{{ user.relationship.city }}, {{ user.relationship.state }}</span>
+        </p>
+      </section>
+    </div>
+  
+    <div>
+      <h3>Endereço do associado</h3>
+      <section>
+        <p>
+          Cep:<span> {{ user.cep }}</span>
+        </p>
+        <p>
+          Cidade e Estado: 
+          <span>{{ user.city }}, {{ user.state }}</span>
+        </p>
+        <p>
+          Bairro:
+          <span>{{ user.burgh }}</span>
+        </p>
+        <p>
+          Rua: <span>{{ user.street }}, N {{ user.streetNumber }}</span>
+        </p>
+        <p>
+          Complemento:
+          <span>{{ user.residenceType }}, {{ user.complement }}</span>, 
+        </p>
+        <p>
+          Morando desde: 
+          <span>{{ user.livingDate }}</span>
+        </p>
+      </section>
+    </div>  
+  
+    <div>
+      <h3>Família e dependentes</h3>
+      <section>
+        <p>Recebe auxílio? <span>{{ user.aux ? 'Sim' : 'Não' }}</span></p>
+        <p>Quantidade de moradores: <span>{{ user.residents }}</span></p>
+        <p>Salário Famíliar: <span>{{ user.familiarSalary }}</span></p>
+    
+        <div class="dependents" *ngIf="user.dependents.length > 0">
+          <span>Dependentes:</span>
+          <div *ngFor="let item of user.dependents">
+            <p>Nome: <span>{{ item.name }}</span></p>
+            <p>Grau de instrução: <span>{{ item.grade }}</span></p>
+            <p>Data de nascimento: <span>{{item.birthDate}}</span></p>
+          </div>
+        </div> 
+      </section>
+    </div>
+  </div>
+</main>
